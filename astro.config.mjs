@@ -7,13 +7,54 @@ import alpinejs from "@astrojs/alpinejs";
 import solidJs from "@astrojs/solid-js";
 import AstroPWA from "@vite-pwa/astro";
 import icon from "astro-icon";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  output: "server", 
-  site: "https://stiktokio.com",
-  adapter: vercel(),
+  // Keep server for your TikTok API functionality
+  output: "server",
+  site: "https://stiktokio.com", 
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true
+    },
+    speedInsights: {
+      enabled: true
+    }
+  }),
+  
+  // Build optimizations for performance
+  build: {
+    // Inline stylesheets smaller than 4kb
+    inlineStylesheets: "auto",
+    // Split chunks for better caching
+    split: true,
+    // Optimize assets
+    assets: "_astro",
+    // Enable asset compression
+    assetsPrefix: process.env.NODE_ENV === 'production' ? undefined : undefined,
+  },
+  
+  // Image optimization
+  image: {
+    // Enable image optimization
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    }
+  },
+  
+  // Prefetch configuration for better navigation
+  prefetch: {
+    prefetchAll: false,
+    defaultStrategy: "viewport"
+  },
+  
+  // Experimental features for performance
+  experimental: {
+    clientPrerender: true,
+    directRenderScript: true
+  },
+
   // Add Astro's built-in i18n configuration
   i18n: {
     defaultLocale: "en",
@@ -22,19 +63,93 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  
   vite: {
     plugins: [tailwindcss()],
     define: {
       __DATE__: `'${new Date().toISOString()}'`,
     },
-    // Minimal configuration - just exclude the problematic library from client build
+    
+    // Enhanced build optimizations
+    build: {
+      // Reduce bundle size
+      target: 'es2020',
+      // Enable CSS code splitting
+      cssCodeSplit: true,
+      // Optimize chunks
+      rollupOptions: {
+        output: {
+          // Manual chunk splitting for better caching
+          manualChunks(id) {
+            // Vendor chunk for node_modules
+            if (id.includes('node_modules')) {
+              // Create separate chunks for large libraries
+              if (id.includes('solid-js')) {
+                return 'solid';
+              }
+              if (id.includes('alpinejs')) {
+                return 'alpine';
+              }
+              if (id.includes('@astrojs')) {
+                return 'astro-runtime';
+              }
+              return 'vendor';
+            }
+            // Separate chunk for components
+            if (id.includes('/src/components/')) {
+              return 'components';
+            }
+            // Separate chunk for layouts
+            if (id.includes('/src/layouts/')) {
+              return 'layouts';
+            }
+          },
+          // Optimize chunk file names
+          chunkFileNames: (chunkInfo) => {
+            if (chunkInfo.name === 'vendor') {
+              return '_astro/vendor.[hash].js';
+            }
+            return '_astro/[name].[hash].js';
+          },
+          assetFileNames: '_astro/[name].[hash][extname]'
+        }
+      },
+      // Minification settings
+      minify: 'esbuild',
+      // Source maps for production debugging (disable if not needed)
+      sourcemap: false,
+      // Remove console logs in production
+      drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
+    },
+    
+    // Optimize dependencies
+    optimizeDeps: {
+      include: [
+        // Pre-bundle frequently used deps
+        'solid-js',
+        'alpinejs'
+      ],
+      exclude: [
+        // Exclude problematic dependencies
+        "@tobyg74/tiktok-api-dl"
+      ],
+    },
+    
+    // SSR configuration
     ssr: {
       external: ["@tobyg74/tiktok-api-dl"],
+      // Optimize SSR performance
+      noExternal: ['solid-js', 'alpinejs']
     },
-    optimizeDeps: {
-      exclude: ["@tobyg74/tiktok-api-dl"],
-    },
+    
+    // Development server optimizations
+    server: {
+      hmr: {
+        overlay: false
+      }
+    }
   },
+  
   integrations: [
     sitemap({
       filter(page) {
@@ -51,65 +166,146 @@ export default defineConfig({
         return !shouldExclude;
       },
     }),
-    alpinejs(),
-    solidJs(),
+    
+    // Alpine.js with optimization
+    alpinejs({
+      entrypoint: '/src/alpine'
+    }),
+    
+    // Solid.js with optimization
+    solidJs({
+      include: ['**/solid/**', '**/components/**/*.tsx']
+    }),
+    
+    // Optimized PWA configuration
     AstroPWA({
       mode: "production",
       base: "/",
       scope: "/",
-      includeAssets: ["favicon.svg"],
+      includeAssets: ["favicon.ico"],
       registerType: "autoUpdate",
+      strategies: "generateSW",
+      
       manifest: {
         name: "Tiktokio - TikTok Downloader - Download TikTok Videos Without Watermark",
-        short_name: "Astros",
+        short_name: "Tiktokio",
         theme_color: "#ffffff",
+        background_color: "#ffffff",
+        display: "standalone",
+        start_url: "/",
         icons: [
           {
             src: "pwa-192x192.webp",
             sizes: "192x192",
-            type: "image/png",
+            type: "image/webp",
           },
           {
-            src: "pwa-512x512.webp",
+            src: "pwa-512x512.webp", 
             sizes: "512x512",
-            type: "image/png",
+            type: "image/webp",
           },
           {
-            src: "pwa-512x512.webp",
+            src: "maskable-icon-512x512.webp",
             sizes: "512x512",
-            type: "image/png",
+            type: "image/webp",
             purpose: "any maskable",
           },
         ],
       },
+      
       workbox: {
+        // Optimize caching strategy
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
+              }
+            }
+          },
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images-cache',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
+              }
+            }
+          }
+        ],
         navigateFallback: "/404",
-        globPatterns: ["*.js"],
+        globPatterns: [
+          '**/*.{js,css,html,ico,png,svg,webp}',
+        ],
+        // Exclude large or dynamic files
+        globIgnores: [
+          '**/node_modules/**/*',
+          '**/admin/**/*'
+        ]
       },
+      
       devOptions: {
         enabled: false,
-        navigateFallbackAllowlist: [/^\/404$/],
         suppressWarnings: true,
       },
     }),
-    icon(),
+    
+    icon({
+      // Optimize icon loading
+      iconDir: "src/icons",
+    }),
   ],
+  
   markdown: {
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, autolinkConfig],
     ],
+    // Optimize markdown processing
+    syntaxHighlight: 'shiki',
+    shikiConfig: {
+      theme: 'github-dark',
+      wrap: true
+    }
   },
+  
+  // Enhanced security configuration
   security: {
     csp: {
       directives: {
-        "script-src": ["'self'", "https://acscdn.com", "https://pagead2.googlesyndication.com"],
-        "connect-src": ["'self'", "https://tikwm.com", "https://acscdn.com"],
-        "style-src": ["'self'", "'unsafe-inline'"],
-        "img-src": ["'self'", "data:", "https://acscdn.com"],
+        "default-src": ["'self'"],
+        "script-src": [
+          "'self'", 
+          "'unsafe-inline'", // Only for critical inline scripts
+          "https://www.googletagmanager.com",
+          "https://pagead2.googlesyndication.com",
+          // Remove acscdn.com or load it conditionally
+        ],
+        "connect-src": [
+          "'self'", 
+          "https://tikwm.com",
+          "https://www.google-analytics.com",
+          "https://analytics.google.com"
+        ],
+        "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        "img-src": [
+          "'self'", 
+          "data:", 
+          "https:",
+          "https://www.googletagmanager.com"
+        ],
+        "font-src": ["'self'", "https://fonts.gstatic.com"],
+        "object-src": ["'none'"],
+        "base-uri": ["'self'"],
+        "form-action": ["'self'"],
+        "frame-ancestors": ["'none'"],
       },
     },
   },
 });
-
-
