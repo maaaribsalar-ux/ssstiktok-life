@@ -11,12 +11,16 @@ import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  // Keep your original server setup - this works!
   output: "server", 
-  site: "https://ssstiktok-life-eight.vercel.app",
+  site: "https://stiktokio.com", // Use your actual domain
   adapter: vercel(),
   
-  // Add Astro's built-in i18n configuration (keep as-is)
+  // Build optimizations for better performance
+  build: {
+    inlineStylesheets: "auto", // Inline critical CSS
+  },
+  
+  // Add Astro's built-in i18n configuration
   i18n: {
     defaultLocale: "en",
     locales: ["en", "it", "ar", "fr", "de", "es", "hi", "id", "ru", "pt", "ko", "tl", "nl", "ms", "tr"],
@@ -25,34 +29,30 @@ export default defineConfig({
     },
   },
   
-  // Conservative Vite optimizations - minimal changes
   vite: {
     plugins: [tailwindcss()],
     define: {
       __DATE__: `'${new Date().toISOString()}'`,
     },
     
-    // Keep your existing SSR config - this works!
+    // SSR configuration for TikTok API
     ssr: {
       external: ["@tobyg74/tiktok-api-dl"],
     },
     
-    // Keep your existing optimizeDeps - this works!
+    // Optimize dependencies
     optimizeDeps: {
       exclude: ["@tobyg74/tiktok-api-dl"],
     },
     
-    // Add minimal build optimizations only
+    // Build optimizations
     build: {
-      // Basic minification
       minify: 'esbuild',
-      // Remove console logs in production
       drop: process.env.NODE_ENV === 'production' ? ['console'] : [],
-      // Simple chunk splitting - don't break server code
+      cssCodeSplit: true,
       rollupOptions: {
         output: {
           manualChunks(id) {
-            // Only split client-side libraries
             if (id.includes('node_modules')) {
               if (id.includes('solid-js')) {
                 return 'solid';
@@ -60,7 +60,9 @@ export default defineConfig({
               if (id.includes('alpinejs')) {
                 return 'alpine';
               }
-              // Don't split server-side dependencies
+              if (id.includes('@astrojs')) {
+                return 'astro-runtime';
+              }
               return 'vendor';
             }
           }
@@ -70,7 +72,6 @@ export default defineConfig({
   },
   
   integrations: [
-    // Keep your existing sitemap config
     sitemap({
       filter(page) {
         const url = new URL(page, 'https://stiktokio.com');
@@ -87,11 +88,10 @@ export default defineConfig({
       },
     }),
     
-    // Keep your existing integrations
     alpinejs(),
     solidJs(),
     
-    // Simplified PWA - fix the bundle size issue only
+    // Optimized PWA configuration
     AstroPWA({
       mode: "production",
       base: "/",
@@ -100,42 +100,57 @@ export default defineConfig({
       registerType: "autoUpdate",
       manifest: {
         name: "Tiktokio - TikTok Downloader - Download TikTok Videos Without Watermark",
-        short_name: "Tiktokio", // Fixed the short_name
+        short_name: "Tiktokio",
         theme_color: "#ffffff",
+        background_color: "#ffffff",
+        display: "standalone",
+        start_url: "/",
         icons: [
           {
             src: "pwa-192x192.webp",
             sizes: "192x192",
-            type: "image/webp", // Fixed the type
+            type: "image/webp",
           },
           {
             src: "pwa-512x512.webp",
             sizes: "512x512",
-            type: "image/webp", // Fixed the type
+            type: "image/webp",
           },
           {
-            src: "maskable-icon-512x512.webp", // Use the correct maskable icon
+            src: "maskable-icon-512x512.webp",
             sizes: "512x512",
-            type: "image/webp", // Fixed the type
+            type: "image/webp",
             purpose: "any maskable",
           },
         ],
       },
       workbox: {
-        // Fix the main issue - exclude large files from precaching
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB limit
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10MB limit
         navigateFallback: "/404",
-        globPatterns: ["*.js"], // Keep simple
-        // Exclude large bundles from precaching
+        globPatterns: [
+          '**/*.{js,css,html,ico,png,svg,webp}',
+        ],
         globIgnores: [
           '**/node_modules/**/*',
           '**/admin/**/*',
-          '**/*vendor*.js' // Exclude vendor bundles if they're large
+          '**/*vendor*.js'
+        ],
+        runtimeCaching: [
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images-cache',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
+              }
+            }
+          }
         ]
       },
       devOptions: {
         enabled: false,
-        navigateFallbackAllowlist: [/^\/404$/],
         suppressWarnings: true,
       },
     }),
@@ -143,7 +158,6 @@ export default defineConfig({
     icon(),
   ],
   
-  // Keep your existing markdown config
   markdown: {
     rehypePlugins: [
       rehypeSlug,
@@ -151,14 +165,20 @@ export default defineConfig({
     ],
   },
   
-  // Keep your existing security config
+  // Clean security configuration - no ad domains
   security: {
     csp: {
       directives: {
-        "script-src": ["'self'", "https://acscdn.com", "https://pagead2.googlesyndication.com"],
-        "connect-src": ["'self'", "https://tikwm.com", "https://acscdn.com"],
+        "default-src": ["'self'"],
+        "script-src": ["'self'", "'unsafe-inline'"],
+        "connect-src": ["'self'", "https://tikwm.com"],
         "style-src": ["'self'", "'unsafe-inline'"],
-        "img-src": ["'self'", "data:", "https://acscdn.com"],
+        "img-src": ["'self'", "data:", "https:"],
+        "font-src": ["'self'"],
+        "object-src": ["'none'"],
+        "base-uri": ["'self'"],
+        "form-action": ["'self'"],
+        "frame-ancestors": ["'none'"],
       },
     },
   },
