@@ -188,6 +188,9 @@ export default defineConfig({
       },
       
       workbox: {
+        // Increase file size limit to handle larger bundles
+        maximumFileSizeToCacheInBytes: 50 * 1024 * 1024, // 50MB
+        
         // Optimize caching strategy
         runtimeCaching: [
           {
@@ -217,10 +220,12 @@ export default defineConfig({
         globPatterns: [
           '**/*.{js,css,html,ico,png,svg,webp}',
         ],
-        // Exclude large or dynamic files
+        // Exclude large or dynamic files from precaching
         globIgnores: [
           '**/node_modules/**/*',
-          '**/admin/**/*'
+          '**/admin/**/*',
+          '**/_astro/vendor*.js', // Exclude large vendor bundles
+          '**/_astro/*vendor*.js', // Exclude any vendor-like files
         ]
       },
       
