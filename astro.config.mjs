@@ -7,33 +7,16 @@ import alpinejs from "@astrojs/alpinejs";
 import solidJs from "@astrojs/solid-js";
 import AstroPWA from "@vite-pwa/astro";
 import icon from "astro-icon";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  // Keep server for your TikTok API functionality
-  output: "server",
+  // Keep your original server setup - this works!
+  output: "server", 
   site: "https://ssstiktok-life-eight.vercel.app",
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true
-    },
-    speedInsights: {
-      enabled: true
-    }
-  }),
+  adapter: vercel(),
   
-  // Build optimizations for performance
-  build: {
-    // Inline stylesheets smaller than 4kb
-    inlineStylesheets: "auto",
-    // Split chunks for better caching
-    split: true,
-    // Optimize assets
-    assets: "_astro",
-  },
-  
-  // Add Astro's built-in i18n configuration
+  // Add Astro's built-in i18n configuration (keep as-is)
   i18n: {
     defaultLocale: "en",
     locales: ["en", "it", "ar", "fr", "de", "es", "hi", "id", "ru", "pt", "ko", "tl", "nl", "ms", "tr"],
@@ -42,93 +25,52 @@ export default defineConfig({
     },
   },
   
+  // Conservative Vite optimizations - minimal changes
   vite: {
     plugins: [tailwindcss()],
     define: {
       __DATE__: `'${new Date().toISOString()}'`,
     },
     
-    // Enhanced build optimizations
+    // Keep your existing SSR config - this works!
+    ssr: {
+      external: ["@tobyg74/tiktok-api-dl"],
+    },
+    
+    // Keep your existing optimizeDeps - this works!
+    optimizeDeps: {
+      exclude: ["@tobyg74/tiktok-api-dl"],
+    },
+    
+    // Add minimal build optimizations only
     build: {
-      // Reduce bundle size
-      target: 'es2020',
-      // Enable CSS code splitting
-      cssCodeSplit: true,
-      // Optimize chunks
+      // Basic minification
+      minify: 'esbuild',
+      // Remove console logs in production
+      drop: process.env.NODE_ENV === 'production' ? ['console'] : [],
+      // Simple chunk splitting - don't break server code
       rollupOptions: {
         output: {
-          // Manual chunk splitting for better caching
           manualChunks(id) {
-            // Vendor chunk for node_modules
+            // Only split client-side libraries
             if (id.includes('node_modules')) {
-              // Create separate chunks for large libraries
               if (id.includes('solid-js')) {
                 return 'solid';
               }
               if (id.includes('alpinejs')) {
                 return 'alpine';
               }
-              if (id.includes('@astrojs')) {
-                return 'astro-runtime';
-              }
+              // Don't split server-side dependencies
               return 'vendor';
             }
-            // Separate chunk for components
-            if (id.includes('/src/components/')) {
-              return 'components';
-            }
-            // Separate chunk for layouts
-            if (id.includes('/src/layouts/')) {
-              return 'layouts';
-            }
-          },
-          // Optimize chunk file names
-          chunkFileNames: (chunkInfo) => {
-            if (chunkInfo.name === 'vendor') {
-              return '_astro/vendor.[hash].js';
-            }
-            return '_astro/[name].[hash].js';
-          },
-          assetFileNames: '_astro/[name].[hash][extname]'
+          }
         }
-      },
-      // Minification settings
-      minify: 'esbuild',
-      // Source maps for production debugging (disable if not needed)
-      sourcemap: false,
-      // Remove console logs in production
-      drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
-    },
-    
-    // Optimize dependencies
-    optimizeDeps: {
-      include: [
-        // Pre-bundle frequently used deps
-        'solid-js',
-        'alpinejs'
-      ],
-      exclude: [
-        // Exclude problematic dependencies
-        "@tobyg74/tiktok-api-dl"
-      ],
-    },
-    
-    // SSR configuration
-    ssr: {
-      external: ["@tobyg74/tiktok-api-dl"],
-      // Optimize SSR performance
-      noExternal: ['solid-js', 'alpinejs']
-    },
-    
-    // Development server optimizations
-    server: {
-      hmr: {
-        overlay: false
       }
     }
   },
   
   integrations: [
+    // Keep your existing sitemap config
     sitemap({
       filter(page) {
         const url = new URL(page, 'https://stiktokio.com');
@@ -145,145 +87,78 @@ export default defineConfig({
       },
     }),
     
-    // Alpine.js with optimization
+    // Keep your existing integrations
     alpinejs(),
-    
-    // Solid.js with optimization
     solidJs(),
     
-    // Optimized PWA configuration
+    // Simplified PWA - fix the bundle size issue only
     AstroPWA({
       mode: "production",
       base: "/",
       scope: "/",
       includeAssets: ["favicon.ico"],
       registerType: "autoUpdate",
-      strategies: "generateSW",
-      
       manifest: {
         name: "Tiktokio - TikTok Downloader - Download TikTok Videos Without Watermark",
-        short_name: "Tiktokio",
+        short_name: "Tiktokio", // Fixed the short_name
         theme_color: "#ffffff",
-        background_color: "#ffffff",
-        display: "standalone",
-        start_url: "/",
         icons: [
           {
             src: "pwa-192x192.webp",
             sizes: "192x192",
-            type: "image/webp",
+            type: "image/webp", // Fixed the type
           },
           {
-            src: "pwa-512x512.webp", 
+            src: "pwa-512x512.webp",
             sizes: "512x512",
-            type: "image/webp",
+            type: "image/webp", // Fixed the type
           },
           {
-            src: "maskable-icon-512x512.webp",
+            src: "maskable-icon-512x512.webp", // Use the correct maskable icon
             sizes: "512x512",
-            type: "image/webp",
+            type: "image/webp", // Fixed the type
             purpose: "any maskable",
           },
         ],
       },
-      
       workbox: {
-        // Increase file size limit to handle larger bundles
-        maximumFileSizeToCacheInBytes: 50 * 1024 * 1024, // 50MB
-        
-        // Optimize caching strategy
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'google-fonts-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
-              }
-            }
-          },
-          {
-            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'images-cache',
-              expiration: {
-                maxEntries: 100,
-                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
-              }
-            }
-          }
-        ],
+        // Fix the main issue - exclude large files from precaching
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB limit
         navigateFallback: "/404",
-        globPatterns: [
-          '**/*.{js,css,html,ico,png,svg,webp}',
-        ],
-        // Exclude large or dynamic files from precaching
+        globPatterns: ["*.js"], // Keep simple
+        // Exclude large bundles from precaching
         globIgnores: [
           '**/node_modules/**/*',
           '**/admin/**/*',
-          '**/_astro/vendor*.js', // Exclude large vendor bundles
-          '**/_astro/*vendor*.js', // Exclude any vendor-like files
+          '**/*vendor*.js' // Exclude vendor bundles if they're large
         ]
       },
-      
       devOptions: {
         enabled: false,
+        navigateFallbackAllowlist: [/^\/404$/],
         suppressWarnings: true,
       },
     }),
     
-    icon({
-      // Optimize icon loading
-      iconDir: "src/icons",
-    }),
+    icon(),
   ],
   
+  // Keep your existing markdown config
   markdown: {
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, autolinkConfig],
     ],
-    // Optimize markdown processing
-    syntaxHighlight: 'shiki',
-    shikiConfig: {
-      theme: 'github-dark',
-      wrap: true
-    }
   },
   
-  // Enhanced security configuration
+  // Keep your existing security config
   security: {
     csp: {
       directives: {
-        "default-src": ["'self'"],
-        "script-src": [
-          "'self'", 
-          "'unsafe-inline'", // Only for critical inline scripts
-          "https://www.googletagmanager.com",
-          "https://pagead2.googlesyndication.com",
-          // Remove acscdn.com or load it conditionally
-        ],
-        "connect-src": [
-          "'self'", 
-          "https://tikwm.com",
-          "https://www.google-analytics.com",
-          "https://analytics.google.com"
-        ],
-        "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-        "img-src": [
-          "'self'", 
-          "data:", 
-          "https:",
-          "https://www.googletagmanager.com"
-        ],
-        "font-src": ["'self'", "https://fonts.gstatic.com"],
-        "object-src": ["'none'"],
-        "base-uri": ["'self'"],
-        "form-action": ["'self'"],
-        "frame-ancestors": ["'none'"],
+        "script-src": ["'self'", "https://acscdn.com", "https://pagead2.googlesyndication.com"],
+        "connect-src": ["'self'", "https://tikwm.com", "https://acscdn.com"],
+        "style-src": ["'self'", "'unsafe-inline'"],
+        "img-src": ["'self'", "data:", "https://acscdn.com"],
       },
     },
   },
