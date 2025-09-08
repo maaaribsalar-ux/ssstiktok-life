@@ -131,21 +131,10 @@ function ResultSection({ data, onReset }: ResultSectionProps) {
 
   return (
     <div class="max-w-6xl mx-auto mt-8 px-4">
-      {/* Back Button */}
-      <div class="mb-6">
-        <button 
-          onClick={onReset}
-          class="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg transition-all duration-300 hover:shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-          </svg>
-          Download Another Video
-        </button>
-      </div>
-
+      
       {/* Results Section */}
       <div class="mt-4 max-w-6xl mx-auto">
-        <div class="bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg overflow-hidden backdrop-blur-sm border border-white/10 p-4">
+        <div class="bg-white rounded overflow-hidden backdrop-blur-sm border border-white/10 p-4">
           <div class="flex flex-col md:flex-row gap-4">
             <div class="md:w-1/3 flex-shrink-0">
               <div class="relative rounded-lg overflow-hidden max-h-[430px]">
@@ -180,7 +169,7 @@ function ResultSection({ data, onReset }: ResultSectionProps) {
                   </h2>
                   <div class="text-gray-400 text-xs px-2 py-1 bg-white/10 rounded-full"></div>
                 </div>
-                <div class="text-white text-sm mb-2">
+                <div class="text-gray-900 text-sm mb-2">
                   {data?.result?.desc || "No description available"}
                 </div>
                 

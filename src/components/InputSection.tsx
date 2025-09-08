@@ -356,7 +356,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
                 fetchData();
               }}
             >
-              <div class="relative flex-grow rounded bg-white">
+              <div class="relative flex-grow rounded bg-gray-200">
                 <input type="text"
                   value={url()}
                   onInput={(e) => {
