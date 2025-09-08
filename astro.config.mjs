@@ -12,7 +12,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   output: "server", 
-  site: "https://stiktokio.com", // Use your actual domain
+  site: "https://ssstiktok-life-eight.vercel.app", // Use your actual domain
   adapter: vercel(),
   
   // Build optimizations for better performance
