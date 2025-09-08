@@ -12,12 +12,13 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   output: "server", 
-  site: "https://ssstiktok-life-eight.vercel.app", // Use your actual domain
+  site: "https://ssstiktok-life-eight.vercel.app",
+  // REMOVED: analytics and speedInsights to eliminate Google Analytics
   adapter: vercel(),
   
   // Build optimizations for better performance
   build: {
-    inlineStylesheets: "auto", // Inline critical CSS
+    inlineStylesheets: "always", // Force inline all CSS to prevent render blocking
   },
   
   // Add Astro's built-in i18n configuration
@@ -45,26 +46,19 @@ export default defineConfig({
       exclude: ["@tobyg74/tiktok-api-dl"],
     },
     
-    // Build optimizations
+    // Enhanced build optimizations
     build: {
+      target: 'es2020',
       minify: 'esbuild',
       drop: process.env.NODE_ENV === 'production' ? ['console'] : [],
-      cssCodeSplit: true,
+      cssCodeSplit: false, // Keep CSS together to reduce requests
       rollupOptions: {
         output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              if (id.includes('solid-js')) {
-                return 'solid';
-              }
-              if (id.includes('alpinejs')) {
-                return 'alpine';
-              }
-              if (id.includes('@astrojs')) {
-                return 'astro-runtime';
-              }
-              return 'vendor';
-            }
+          manualChunks: {
+            // Group critical scripts together
+            'critical': ['solid-js'],
+            'ui': ['alpinejs'],
+            'vendor': ['@astrojs/solid-js']
           }
         }
       }
@@ -91,7 +85,7 @@ export default defineConfig({
     alpinejs(),
     solidJs(),
     
-    // Optimized PWA configuration
+    // Simplified PWA configuration
     AstroPWA({
       mode: "production",
       base: "/",
@@ -125,28 +119,14 @@ export default defineConfig({
         ],
       },
       workbox: {
-        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10MB limit
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB limit
         navigateFallback: "/404",
         globPatterns: [
           '**/*.{js,css,html,ico,png,svg,webp}',
         ],
         globIgnores: [
           '**/node_modules/**/*',
-          '**/admin/**/*',
-          '**/*vendor*.js'
-        ],
-        runtimeCaching: [
-          {
-            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'images-cache',
-              expiration: {
-                maxEntries: 100,
-                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
-              }
-            }
-          }
+          '**/admin/**/*'
         ]
       },
       devOptions: {
@@ -165,7 +145,7 @@ export default defineConfig({
     ],
   },
   
-  // Clean security configuration - no ad domains
+  // Clean security configuration
   security: {
     csp: {
       directives: {
