@@ -70,19 +70,77 @@ const hrefLangs = generateHrefLangs();
 <html lang={pageLang}>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="theme-color" content="#ffffff" />
+		
+		<!-- Critical CSS - inline to prevent render blocking -->
+		<style>
+			/* Reset and base styles */
+			*,*::before,*::after{box-sizing:border-box}
+			body{margin:0;font-family:'Inter Variable',system-ui,sans-serif;line-height:1.6}
+			
+			/* Dark mode */
+			.dark\:bg-stone-950{background-color:rgb(12 10 9)}
+			
+			/* Layout */
+			.relative{position:relative}
+			.max-w-6xl{max-width:72rem}
+			.max-w-7xl{max-width:80rem}
+			.mx-auto{margin-left:auto;margin-right:auto}
+			.text-center{text-align:center}
+			.flex{display:flex}
+			.items-center{align-items:center}
+			.justify-center{justify-content:center}
+			
+			/* Typography */
+			.text-2xl{font-size:1.5rem;line-height:2rem}
+			.text-4xl{font-size:2.25rem;line-height:2.5rem}
+			.font-bold{font-weight:700}
+			.text-white{color:rgb(255 255 255)}
+			.text-black{color:rgb(0 0 0)}
+			
+			/* Gradients */
+			.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}
+			.from-\[#5940f1\]{--tw-gradient-from:#5940f1;--tw-gradient-to:rgb(89 64 241 / 0);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}
+			.to-\[#ce00ff\]{--tw-gradient-to:#ce00ff}
+			
+			/* Spacing */
+			.p-4{padding:1rem}
+			.pt-14{padding-top:3.5rem}
+			.mt-2{margin-top:0.5rem}
+			.mt-8{margin-top:2rem}
+			
+			/* Forms */
+			.w-full{width:100%}
+			.h-14{height:3.5rem}
+			.rounded-xl{border-radius:0.75rem}
+			.px-5{padding-left:1.25rem;padding-right:1.25rem}
+			
+			/* Responsive */
+			@media (min-width:640px){
+				.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}
+				.sm\:pt-10{padding-top:2.5rem}
+			}
+			
+			/* Performance optimizations */
+			img{content-visibility:auto;height:auto;max-width:100%}
+			header{position:relative}
+		</style>
+		
+		<!-- Resource hints for performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		
 		<!-- Generate hreflang links manually -->
 		{hrefLangs.map(({ lang, href }) => (
 			<link rel="alternate" hreflang={lang} href={href} />
 		))}
 		
-		
 		<ViewTransitions />
-		<!-- Global CSS -->
+		
+		<!-- SEO -->
 		<SEO
 			title={makeTitle}
 			description="Tiktokio is tiktok downloader, tiktok video downloader and tiktok story downloader download tiktok video without watermark, tiktok to mp4 and tiktok video saver."
@@ -107,6 +165,8 @@ const hrefLangs = generateHrefLangs();
 		<meta name="twitter:image" content={resolvedImageWithDomain} />
 		<meta name="twitter:site" content="@YourTwitterHandle" />
 		<meta name="twitter:creator" content="@tiktokio_cam" />
+		
+		<!-- Theme handling script -->
 		<script is:inline>
 			function handleThemeChange() {
 				if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
@@ -119,7 +179,25 @@ const hrefLangs = generateHrefLangs();
 			document.removeEventListener("astro:after-swap", handleThemeChange);
 			document.addEventListener("astro:after-swap", handleThemeChange);
 		</script>
+		
+		<!-- PWA Script -->
 		<script src="/src/pwa.ts"></script>
+		
+		<!-- Optimize script loading -->
+		<script is:inline>
+			// Preload critical scripts
+			const preloadScript = (href) => {
+				const link = document.createElement('link');
+				link.rel = 'preload';
+				link.as = 'script';
+				link.href = href;
+				document.head.appendChild(link);
+			};
+			
+			// Preload critical scripts for faster loading
+			preloadScript('/_astro/InputScreen.AI2DKR8I.js');
+			preloadScript('/_astro/solid.MQWjWrFn.js');
+		</script>
 	</head>
 	<body class="dark:bg-stone-950">
 		<header class="relative">
@@ -129,17 +207,5 @@ const hrefLangs = generateHrefLangs();
 			<slot />
 		</main>
 		<Footer />
-		<style is:global>
-			/* Improve Page speed */
-			/* https://css-tricks.com/almanac/properties/c/content-visibility/ */
-			img {
-				content-visibility: auto;
-			}
-			
-			/* Ensure header has relative positioning for language selector */
-			header {
-				position: relative;
-			}
-		</style>
 	</body>
 </html>
