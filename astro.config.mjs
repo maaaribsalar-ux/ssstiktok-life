@@ -107,10 +107,7 @@ export default defineConfig({
         'solid-js',
         'alpinejs'
       ],
-      exclude: [
-        // Exclude problematic dependencies
-        "@tobyg74/tiktok-api-dl"
-      ],
+      
     },
     
     // SSR configuration
