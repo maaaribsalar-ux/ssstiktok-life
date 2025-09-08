@@ -7,13 +7,13 @@ import alpinejs from "@astrojs/alpinejs";
 import solidJs from "@astrojs/solid-js";
 import AstroPWA from "@vite-pwa/astro";
 import icon from "astro-icon";
-import vercel from "@astrojs/vercel/static";
+import vercel from "@astrojs/vercel/serverless";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   // Keep server for your TikTok API functionality
   output: "server",
-  site: "https://stiktokio.com", 
+  site: "https://ssstiktok-life-eight.vercel.app",
   adapter: vercel({
     webAnalytics: {
       enabled: true
@@ -31,30 +31,8 @@ export default defineConfig({
     split: true,
     // Optimize assets
     assets: "_astro",
-    // Enable asset compression
-    assetsPrefix: process.env.NODE_ENV === 'production' ? undefined : undefined,
   },
   
-  // Image optimization
-  image: {
-    // Enable image optimization
-    service: {
-      entrypoint: 'astro/assets/services/sharp'
-    }
-  },
-  
-  // Prefetch configuration for better navigation
-  prefetch: {
-    prefetchAll: false,
-    defaultStrategy: "viewport"
-  },
-  
-  // Experimental features for performance
-  experimental: {
-    clientPrerender: true,
-    directRenderScript: true
-  },
-
   // Add Astro's built-in i18n configuration
   i18n: {
     defaultLocale: "en",
@@ -168,14 +146,10 @@ export default defineConfig({
     }),
     
     // Alpine.js with optimization
-    alpinejs({
-      entrypoint: '/src/alpine'
-    }),
+    alpinejs(),
     
     // Solid.js with optimization
-    solidJs({
-      include: ['**/solid/**', '**/components/**/*.tsx']
-    }),
+    solidJs(),
     
     // Optimized PWA configuration
     AstroPWA({
