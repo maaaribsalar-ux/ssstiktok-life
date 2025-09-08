@@ -25,90 +25,7 @@ interface ResultSectionProps {
 
 function ResultSection({ data, onReset }: ResultSectionProps) {
   
-  // Load Google AdSense ad
-  const loadGoogleAd = () => {
-    try {
-      console.log("=== ADSENSE DEBUG ===");
-      console.log("Loading Google AdSense...");
-      
-      // Check if AdSense script is already loaded
-      let adsenseScript = document.querySelector('script[src*="adsbygoogle.js"]');
-      
-      if (!adsenseScript) {
-        console.log("AdSense script not found, loading...");
-        adsenseScript = document.createElement('script');
-        adsenseScript.async = true;
-        adsenseScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4342939946293194";
-        adsenseScript.crossOrigin = "anonymous";
-        
-        adsenseScript.onload = () => {
-          console.log("AdSense script loaded successfully");
-          initializeAd();
-        };
-        
-        adsenseScript.onerror = () => {
-          console.error("Failed to load AdSense script");
-          showAdPlaceholder();
-        };
-        
-        document.head.appendChild(adsenseScript);
-      } else {
-        console.log("AdSense script already loaded");
-        initializeAd();
-      }
-    } catch (error) {
-      console.error("AdSense loading error:", error);
-      showAdPlaceholder();
-    }
-  };
-
-  // Initialize the AdSense ad
-  const initializeAd = () => {
-    setTimeout(() => {
-      try {
-        console.log("Initializing AdSense ad...");
-        
-        // Check if adsbygoogle is available
-        if (typeof window.adsbygoogle !== 'undefined') {
-          console.log("adsbygoogle is available, pushing ad...");
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-          console.log("AdSense ad pushed successfully");
-        } else {
-          console.error("adsbygoogle not available");
-          showAdPlaceholder();
-        }
-      } catch (e) {
-        console.error("AdSense initialization error:", e);
-        showAdPlaceholder();
-      }
-    }, 1000); // Longer delay to ensure DOM is ready
-  };
-
-  // Show placeholder when AdSense fails
-  const showAdPlaceholder = () => {
-    const adContainer = document.querySelector('.adsense-container');
-    if (adContainer) {
-      adContainer.innerHTML = `
-        <div style="width:336px;height:280px;background:#f8f9fa;display:flex;align-items:center;justify-content:center;border:2px dashed #dee2e6;border-radius:8px;">
-          <div style="text-align:center;color:#6c757d;padding:20px;">
-            <p style="margin:0;font-size:14px;font-weight:500;">Advertisement Space</p>
-            <p style="margin:5px 0 0;font-size:12px;">Configure AdSense to display ads</p>
-          </div>
-        </div>
-      `;
-    }
-  };
-
-  // Load ads when component mounts
-  loadGoogleAd();
-
-  onCleanup(() => {
-    // Cleanup AdSense related resources if needed
-    const adsenseScript = document.querySelector('script[src*="adsbygoogle.js"]');
-    if (adsenseScript) {
-      adsenseScript.remove();
-    }
-  });
+  // ALL ADSENSE CODE REMOVED FOR BETTER PERFORMANCE
 
   const getVideoUrl = () => {
     const result = data?.result;
@@ -173,18 +90,7 @@ function ResultSection({ data, onReset }: ResultSectionProps) {
                   {data?.result?.desc || "No description available"}
                 </div>
                 
-                {/* Google AdSense Ad Container */}
-                <div class="flex justify-center my-4">
-                  <div class="adsense-container" style="width:336px;margin:0 auto;">
-                    {/* AdSense Ad Unit */}
-                    <ins class="adsbygoogle"
-                         style="display:block;width:336px;height:280px"
-                         data-ad-client="ca-pub-4342939946293194"
-                         data-ad-slot="6558620513"
-                         data-ad-format="rectangle"
-                         data-full-width-responsive="false"></ins>
-                  </div>
-                </div>
+                {/* AD CONTAINER REMOVED FOR BETTER PERFORMANCE */}
               </div>
 
               <div class="space-y-2">
