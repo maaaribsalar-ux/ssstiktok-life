@@ -21,63 +21,11 @@ const { dynamic = false } = Astro.props;
           <div class="mx-auto max-w-6xl text-center">
             <h1 class="text-2xl font-bold tracking-tight text-white dark:text-white sm:text-4xl">SSSTiktok - TikTok Downloader</h1>
             <p class="mt-2 text-lg leading-8 text-white dark:text-gray-100">Download TikTok Video Without Watermark Tiktok to mp4</p>
-            
-            <!-- Reserve space for ad to prevent layout shift -->
-            <div class="ad-container my-4" style="width: 300px; height: 250px; margin: 1rem auto; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-              <div id="hero-ad-slot" style="width: 100%; height: 100%;">
-                <!-- Ad will be loaded asynchronously -->
-              </div>
-            </div>
-            
+                       
             <InputScreen client:only="solid-js" />
           </div>
   </div>
 </div>
 
-<!-- Load ad script after page interaction -->
-<script>
-  // Load the specific ad script after user interaction
-  let adLoaded = false;
-  
-  function loadHeroAd() {
-    if (adLoaded) return;
-    adLoaded = true;
-    
-    // Load the specific ad script
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = "//qh.misweenownself.com/tCciuVIqr69/105741";
-    script.setAttribute('data-cfasync', 'false');
-    
-    script.onload = () => {
-      console.log('Hero ad script loaded');
-    };
-    
-    script.onerror = () => {
-      // Show placeholder if ad fails to load
-      const adSlot = document.getElementById('hero-ad-slot');
-      if (adSlot) {
-        adSlot.innerHTML = '<div style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px;">Ad loading...</div>';
-      }
-    };
-    
-    document.head.appendChild(script);
-  }
-  
-  // Load on first user interaction
-  const events = ['mousedown', 'touchstart', 'scroll'];
-  const loadOnInteraction = () => {
-    loadHeroAd();
-    events.forEach(event => {
-      document.removeEventListener(event, loadOnInteraction, { passive: true });
-    });
-  };
-  
-  events.forEach(event => {
-    document.addEventListener(event, loadOnInteraction, { passive: true });
-  });
-  
-  // Fallback: load after 2 seconds
-  setTimeout(loadHeroAd, 2000);
-</script>
+
 </div>
