@@ -1,5 +1,4 @@
 ---
----
 import Link from "@components/ui/link.astro";
 // Remove old astro-i18next imports
 // import { localizePath } from "astro-i18next";
@@ -28,182 +27,114 @@ const features = [
 ];
 ---
 
-<!-- About Section -->
 <div class="relative p-4">
-  <div class="max-w-screen-xl mx-auto">
-    <section id="about" class="relative overflow-hidden">
-      <div class="container max-w-7xl mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-            Tiktok Downloader <span class="text-orange-400">Download Tiktok Videos</span> Without Watermark
-          </h2>
-          <div class="w-24 h-1 mx-auto bg-orange-400 mt-4"></div>
-          <p class="mt-4 mx-auto text-lg text-gray-900 dark:text-white">
-            Tiktokio is fastest tiktok downloader to download tiktok video. This tiktok video downloader no watermark helps user to download tiktok video without watermark, download tiktok story, Tiktok mp3 downloader.
-          </p>
-        </div>
+      <div class="max-w-screen-xl mx-auto">
+            <div class="rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
+				<section id="about" class="relative overflow-hidden">
+					<div class="absolute inset-0 w-full h-full"></div>
+    					<div class="container max-w-7xl mx-auto px-4 relative z-10">
+      						<div class="text-center mb-16">
+            					<h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Tiktok Downloader <span class="text-orange-400 dark:text-orange-400">Download Tiktok Videos</span>Without Watermark</h2>
+            						<div class="w-24 h-1 mx-auto bg-orange-400"></div>
+            						<p class="mt-4 mx-auto text-lg text-gray-900 dark:text-white">Tiktokio is fastest <a href="/">tiktok downloader</a> to download tiktok video. This tiktok video downloader no watermark similar to <a href="/">tiktokio .com</a> tiktok downloader helps user to download tiktok video without watermark, download tiktok story, Tiktok mp3 downloader. Along with the partner <a href="https://insta.com.in" target="_blank" class="text-lg text-gray-900 leading-6 text-left" >Instagram Pro APK</a> offers enhanced features for downloading videos and stories from Instagram.</p>
+      						</div>
+            			</div>
+      			</section>
+			</div>
       </div>
-    </section>
-  </div>
 </div>
 
-<!-- TikTok Stepper Component -->
-<div class="min-h-screen bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 p-6 flex items-center justify-center">
-  <div class="w-full max-w-2xl">
-    <!-- Stepper Header -->
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-        How to download TikTok without watermark?
-      </h2>
-    </div>
 
-    <!-- Stepper Steps -->
-    <div class="space-y-8">
-      <!-- Step 1 -->
-      <div class="flex items-start space-x-6 relative">
-        <div class="flex-shrink-0">
-          <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white border border-white/30">
-            <!-- Search Icon -->
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-          </div>
-        </div>
-        <div class="flex-1 pt-2">
-          <h3 class="text-2xl font-bold text-white mb-2">Find a TT</h3>
-          <p class="text-white/90 text-lg leading-relaxed">
-            Open the TikTok app on your mobile device. Scroll to find the video you'd like to save. Play the video to confirm it's the right one.
-          </p>
-        </div>
-        <!-- Connector Line -->
-        <div class="absolute left-8 top-20 w-0.5 h-8 bg-white/30"></div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="flex items-start space-x-6 relative">
-        <div class="flex-shrink-0">
-          <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white border border-white/30">
-            <!-- Link Icon -->
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
-            </svg>
-          </div>
-        </div>
-        <div class="flex-1 pt-2">
-          <h3 class="text-2xl font-bold text-white mb-2">Copy the link</h3>
-          <p class="text-white/90 text-lg leading-relaxed">
-            Tap the Share button located on the right side of the screen. Select Copy link from the menu. Check your clipboard to ensure the URL is copied correctly.
-          </p>
-        </div>
-        <!-- Connector Line -->
-        <div class="absolute left-8 top-20 w-0.5 h-8 bg-white/30"></div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="flex items-start space-x-6">
-        <div class="flex-shrink-0">
-          <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white border border-white/30">
-            <!-- Download Icon -->
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-            </svg>
-          </div>
-        </div>
-        <div class="flex-1 pt-2">
-          <h3 class="text-2xl font-bold text-white mb-2">Save TikTok</h3>
-          <p class="text-white/90 text-lg leading-relaxed">
-            Go to the sss TikTok download without watermark service and paste the copied link into the text field at the top. Click 'Save' to start the video download.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bottom decoration -->
-    <div class="mt-12 text-center">
-      <div class="inline-flex space-x-2">
-        <div class="w-3 h-3 bg-white/30 rounded-full"></div>
-        <div class="w-3 h-3 bg-white/30 rounded-full"></div>
-        <div class="w-3 h-3 bg-white/30 rounded-full"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- How to Download Section (Detailed Steps) -->
 <div class="relative p-4">
-  <div class="max-w-screen-xl mx-auto">
-    <section id="how-to-play" class="relative overflow-hidden">
-      <div class="container max-w-6xl mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-            How to <span class="text-orange-400">Download</span> Tiktok Video?
-          </h2>
-          <div class="w-24 h-1 mx-auto bg-orange-400 rounded-full mt-4"></div>
-          <p class="text-gray-900 text-lg mt-6 dark:text-white">
-            Follow these simple steps to download TikTok videos without watermarks using Tiktokio.
-          </p>
-        </div>
+      <div class="max-w-screen-xl mx-auto">
+            <div class="rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
+				<section id="how-to-play" class="relative overflow-hidden">
+      				<div class="absolute inset-0 w-full h-full">
+            			<div class="absolute inset-0"></div>
+      				</div>
+			        <div itemprop="itemListElement" itemscope itemtype="https://schema.org/HowToStep" class="container max-w-6xl mx-auto px-4 relative z-10">
+            			<div class="text-center mb-16">
+            				<h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">How to <span class="text-orange-400 dark:text-orange-400">Download</span> Tiktok Video?</h2>
+                        	<meta itemprop="url" content="/" />
+                        	<meta itemprop="timeRequired" content="PT1M"/>
+            				<div class="w-24 h-1 mx-auto bg-orange-400 rounded-full"></div>
+                  				<p class="text-gray-900 text-lg mt-6 dark:text-white">Along with TikTok downloader your choice for Tiktokio as an online web tool that allows users to download bulk tiktok video downloader without watermark videos from TikTok. This tool performs as a <a href="https://stiktokio.com/tiktok-story-downloader">tiktok story downloader</a>, tiktok thumbnail downloader, tik tok photo download and tiktok to mp4 TikTok content directly to your device in formats like MP4. Tiktokio is an advanced TikTok downloader that even allows you to download whole tiktok profile shared on TikTok.</p>
+                  				<p class="text-gray-900 text-lg mt-6 dark:text-white">When you need to <a href="https://stiktokio.com/">download TikTok videos</a> via Tiktok downloader, it can be a easy process if you follow these simple steps in Tiktokio. Here’s a guide to help you easily download TikTok videos without watermarks.</p>
+            			</div>
 
-        <!-- Steps Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-          <!-- Step 1 -->
-          <div class="bg-gradient-to-r from-slate-900 to-slate-700 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 overflow-hidden">
-            <div class="relative h-48 w-full bg-gradient-to-br from-purple-600/30 to-pink-600/30">
-              <img src="/images/tiktok-search.webp" alt="Step 1: Copy the TikTok Video Link" class="w-full h-full object-contain p-4">
-              <div class="absolute top-3 left-3 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                <span class="text-xl font-bold text-white">1</span>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-white mb-3">Copy the TikTok Video Link</h3>
-              <p class="text-white">Open the TikTok app, navigate to the video you want to download, tap the "Share" button and select "Copy Link."</p>
-            </div>
-          </div>
+      				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-          <!-- Step 2 -->
-          <div class="bg-gradient-to-r from-slate-900 to-slate-700 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 overflow-hidden">
-            <div class="relative h-48 w-full bg-gradient-to-br from-purple-600/30 to-pink-600/30">
-              <img src="/images/how-to-step2.webp" alt="Step 2: Paste the link" class="w-full h-full object-contain p-4">
-              <div class="absolute top-3 left-3 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                <span class="text-xl font-bold text-white">2</span>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-white mb-3">Open Tiktokio - TikTok Video Downloader</h3>
-              <p class="text-white">Visit Tiktokio.com, paste the copied link into the input box and click "Download." Choose to download without watermark.</p>
-            </div>
-          </div>
+            <!--1-->
+            		<div itemtype="https://schema.org/HowToStep" class="how-to-card bg-gradient-to-r from-slate-900 to-slate-700 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 overflow-hidden">
+                  		<div class="relative h-48 w-full overflow-hidden bg-gradient-to-br from-purple-600/30 to-pink-600/30">
+                        		<img src="/images/tiktok-search.webp" alt="Step 1: Copy the TikTok Video Link" class="w-full h-full object-contain p-4">
+                  			<div class="absolute top-3 left-3 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                        		<span itemprop="position" content="1" class="text-xl font-bold text-white">1</span>
+                  			</div>
+                  		</div>
 
-          <!-- Step 3 -->
-          <div class="bg-gradient-to-r from-slate-900 to-slate-700 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 overflow-hidden">
-            <div class="relative h-48 w-full bg-gradient-to-br from-purple-600/30 to-pink-600/30">
-              <img src="/images/how-to-step3.webp" alt="Step 3: Download video" class="w-full h-full object-contain p-4">
-              <div class="absolute top-3 left-3 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                <span class="text-xl font-bold text-white">3</span>
-              </div>
+                  	<div class="p-6">
+                  		<div class="flex items-center gap-3 mb-3">
+                        	<span class="iconify i-mdi:content-copy w-6 h-6 text-pink-400" aria-hidden="true" style=""></span>
+                        	<h3 itemprop="name" class="text-xl font-semibold text-white">Copy the TikTok Video Link</h3>
+                  		</div>
+                        	<p itemprop="text" class="text-white">This is quiet simple, just Open the TikTok app in your device, Navigate to the video you wish to download Tiktok video, Tap the "Share" button (an arrow icon) and select "Copy Link."</p>
+                  	</div>
             </div>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-white mb-3">Download Tiktok Video without Watermark</h3>
-              <p class="text-white">Once the video is processed, click the download link to save the TikTok video to your device.</p>
+
+            <!--2-->
+            <div itemtype="https://schema.org/HowToStep" class="how-to-card bg-gradient-to-r from-slate-900 to-slate-700 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 overflow-hidden">
+                  <div class="relative h-48 w-full overflow-hidden bg-gradient-to-br from-purple-600/30 to-pink-600/30">
+                        <img src="/images/how-to-step2.webp" alt="Step 2: Paste the link" class="w-full h-full object-contain p-4">
+                  <div class="absolute top-3 left-3 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                        <span itemprop="position" content="2" class="text-xl font-bold text-white">2</span>
+                  </div>
+                  </div>
+
+                  <div class="p-6">
+                  <div class="flex items-center gap-3 mb-3">
+                        <span class="iconify i-mdi:link w-6 h-6 text-pink-400" aria-hidden="true" style=""></span>
+                        <h3 itemprop="name" class="text-xl font-semibold text-white">Open Tiktokio - TikTok Video Downloader</h3>
+                  </div>
+                        <p itemprop="text" class="text-white">Visit <a href="https://stiktokio.com/" class="font-medium text-white underline dark:text-white hover:no-underline">STiktokio.com</a>. Paste the copied link into the input box and click "Download." Choose the option to download Tiktok Video without a watermark.</p>
+                  </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Bottom Text -->
-        <div class="text-center mt-12">
-          <p class="text-gray-900 text-lg dark:text-white">
-            TikTok downloader is simple to save videos, thumbnails and photos from TikTok for offline use or creative projects.
-          </p>
-        </div>
+            <!--3-->
+            <div itemtype="https://schema.org/HowToStep" class="how-to-card bg-gradient-to-r from-slate-900 to-slate-700 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 overflow-hidden">
+                  <div class="relative h-48 w-full overflow-hidden bg-gradient-to-br from-purple-600/30 to-pink-600/30">
+                        <img src="/images/how-to-step3.webp" alt="Step 3: Download video" class="w-full h-full object-contain p-4">
+                  <div class="absolute top-3 left-3 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                        <span itemprop="position" content="3" class="text-xl font-bold text-white">3</span>
+                  </div>
+                  </div>
+                  <div class="p-6">
+                  <div class="flex items-center gap-3 mb-3">
+                        <span class="iconify i-mdi:download w-6 h-6 text-pink-400" aria-hidden="true" style=""></span>
+                        <h3 itemprop="name" class="text-xl font-semibold text-white">Download Tiktok Video without Watermark</h3>
+                  </div>
+                        <p itemprop="text" class="text-white">Once the video is processed, you will be prompted to save it to your device. Click the download link to download Tiktok video.</p>
+                  </div>
+             </div>
+                  <!--End-->
 
-        <!-- Call to Action Button -->
-        <div class="flex justify-center mt-12">
-          <a href="/" class="bg-gradient-to-r from-slate-900 to-slate-700 p-6 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 text-lg text-white">
-            Start Downloading Now
-          </a>
-        </div>
       </div>
-    </section>
-  </div>
+<div class="text-center mb-16">
+			<p itemprop="text" class="text-gray-900 text-lg mt-6 dark:text-white">TikTok downloader you got now is simple to save videos, thumbnails and photos from TikTok for offline use or creative projects like <a href="https://cricfy.pro/" target="_blank" class="font-medium text-black dark:text-white hover:no-underline">cricfy app</a>. It covers all your questions like can you download tiktok, how to remove tiktok watermark, need tiktok logo remover or even you search for how to remove tiktok watermark in capcut. You just need Tiktokio instead of using other tools.</p>
+      </div>
+
+<div class="flex justify-center mt-12" >
+                  <a href="/" class="bg-gradient-to-r from-slate-900 to-slate-700 p-6 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 text-lg text-white dark:text-white">Start Downloading Now</a>
+	</div>
+
+            
 </div>
+</section>
+
+                 
+   </div>
+</div>
+</div>
+
+
+<!--Sention 1 End -->
