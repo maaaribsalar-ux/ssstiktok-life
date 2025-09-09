@@ -1,12 +1,7 @@
 ---
 import LanguageSelector from "@components/languageselector.astro";
 import { menuitems } from "@components/navbar/navbar.astro";
-import ThemeSelector from "@components/themeselector.astro";
 import logo from "assets/logo.svg";
-
-// Remove old astro-i18next imports
-// import { localizePath } from "astro-i18next";
-// import { t } from "i18next";
 
 // Add new built-in i18n imports
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
@@ -24,7 +19,7 @@ function localizePath(path: string) {
 }
 ---
 
-<footer class="pb-12 pt-28 dark:bg-stone-950">
+<footer class="pb-12 pt-28 dark:bg-stone-950" style="min-height: 400px;">
 	<div class="mx-auto max-w-6xl px-6 md:px-12 lg:px-6 xl:px-0">
 		<!-- DECOMMENT HERE IF YOU WANT YOUR LOGO IN THE FOOTER -->
 		<!-- <a href={localizePath("/")} aria-label="logo" class="group flex items-center justify-center space-x-2">
@@ -33,7 +28,8 @@ function localizePath(path: string) {
 				Astros
 			</span>
 		</a> -->
-		<ul role="list" class="flex flex-wrap items-center justify-center gap-4 py-4 text-gray-600 dark:text-white sm:gap-8">
+		
+		<ul role="list" class="flex flex-wrap items-center justify-center gap-4 py-4 text-gray-600 dark:text-white sm:gap-8" style="min-height: 60px;">
 			<li role="listitem">
 				<a href={localizePath("/")} class="duration-300 hover:text-gray-900 dark:hover:text-gray-100">Home</a>
 			</li>
@@ -61,136 +57,136 @@ function localizePath(path: string) {
 			}
 		</ul>
 		
+		<div class="mt-4 text-center" style="min-height: 40px;">
+			<span class="text-sm tracking-wide text-gray-500 dark:text-white">Copyright © <a href="/" class="hover:!underline font-semibold !text-gray-700">TikTokio</a> 2025 - Present. All rights reserved</span>
+		</div>
 		
-		<script type="application/ld+json">
-                    {
-                        "@context": "http://schema.org",
-                        "@type": "Organization",
-                        "name": "Tiktokio",
-                        "url": "https://stiktokio.com",
-                        "logo": "/apple-touch-icon-180x180.webp",
-                        "image": "/meta/opengraph.webp",
-                        "description":"sTikTokio - Tiktok downloader to online download tiktok videos in mp4 without watermark easily, Tiktok video downloader is Fast, easy and works on any device",
-                        "email": "contact@stiktokio.com"
-                    }
-                </script>
-                                
-				<script type="application/ld+json">
-				{ "@context": "http://schema.org", 
+		<!-- JSON-LD structured data - optimized to not cause layout shifts -->
+		<script type="application/ld+json" style="display: none;">
+			{
+				"@context": "http://schema.org",
+				"@type": "Organization",
+				"name": "Tiktokio",
+				"url": "https://stiktokio.com",
+				"logo": "/apple-touch-icon-180x180.webp",
+				"image": "/meta/opengraph.webp",
+				"description":"sTikTokio - Tiktok downloader to online download tiktok videos in mp4 without watermark easily, Tiktok video downloader is Fast, easy and works on any device",
+				"email": "contact@stiktokio.com"
+			}
+		</script>
+		
+		<script type="application/ld+json" style="display: none;">
+			{ 
+				"@context": "http://schema.org", 
 				"@type": "WebPage", 
 				"url": "https://stiktokio.com", 
 				"inLanguage":"en-US", 
-				"description": "TikTokio is Tiktok video downloader to online download tiktok videos without watermark easily, download video from tiktok, free download tiktok video in mp4." } 
-				</script>
-				
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is Tiktok - Tiktokio Video Downloader and how does it work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tiktok Video Downloader lets you download videos, reels, stories, and profile pictures from Tiktok. It processes the URL, extracts the media file, and provides a high-quality download link to save content directly to your device without watermarks."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the Tiktokio - Tiktok Video Downloader for downloading high-quality videos?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tiktok Video Downloader maintains original video quality in most cases. It ensures you get the highest resolution available from Tiktok while preserving all video details, colors, and audio quality."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take to download videos using Tiktokio - Tiktok Video Downloader?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tiktokio - Tiktok Video Downloader processes most requests within seconds. Download time depends on your internet speed and video size. Most Tiktok videos, reels, and stories download in under 30 seconds, while longer Tiktok videos might take slightly more time."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use Tiktok Video Downloader to save multiple videos at once?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! Tiktokio - Tiktok Video Downloader supports batch downloading, allowing you to save multiple Tiktok videos, reels, and stories simultaneously. This time-saving feature is perfect for content creators, marketers, or anyone needing to download several videos efficiently."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Will Tiktokio - Tiktok Video Downloader work if I download content multiple times?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, Tiktokio Tiktok Video Downloader works reliably every time. There are no limits to how many times you can download the same or different content. The servers are optimized to handle repeated requests, ensuring consistent performance for all your downloads."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can I use videos downloaded with Tiktok Video Downloader?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Videos from Tiktok Video Downloader can be used for offline viewing, content collections, educational purposes, presentations, or sharing across platforms. The downloaded MP4 files are compatible with all major devices and video players."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Tiktokio - Tiktok Video Downloader compatible with all Tiktok content types?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tiktok - Tiktok Video Downloader works with all Tiktok content types including regular videos, reels, stories, IGTV videos, and carousel posts containing videos. It's regularly updated to accommodate Tiktok platform changes."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data private when using Tiktok Video Downloader?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, Tiktokio - Tiktok Video Downloader prioritizes your privacy. It doesn't store downloaded videos or track download history. The process happens through secure connections without requiring accounts or personal information."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What devices and browsers support Tiktok Video Downloader?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tiktokio - Tiktok Downloader works on all major devices (Windows, Mac, iPhone, iPad, Android) and browsers (Chrome, Firefox, Safari, Edge, Opera). This cross-platform compatibility ensures you can download Tiktok videos on any device."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I download private Tiktok content with Tiktokio - Tiktok Downloader?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tiktok Video Downloader can only download content you have permission to view. For private accounts, you must be logged in and following that account. Tiktok Downloader respects Tiktok's privacy settings and copyright policies."
-      }
-    }
-  ]
-}
-</script>
-<script type="application/ld+json"> 
-
-{ "@context": "https://schema.org", 
-"@type": "WebApplication", 
-"name": "Tiktokio", 
-"alternateName": [ "TikTokio - TikTok Video Downloader" ], 
-"image": "https://stiktokio.com/images/tiktokio-logo.webp", 
-"operatingSystem": "Windows, Linux, iOS, Android, OSX, macOS", 
-"applicationCategory": "UtilitiesApplication", 
-"featureList": [ "TikTokio", "TikTok Video Downloader", "Download Tiktok Videos without watermark", "Download TikTok Videos", "Download Tiktok photos", "Download Douyin Video" ], 
-"aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "ratingCount": "8173" }, 
-"offers": { "@type": "Offer", "price": "0.00", "priceCurrency": "USD" } }
-
-</script>				
-			
+				"description": "TikTokio is Tiktok video downloader to online download tiktok videos without watermark easily, download video from tiktok, free download tiktok video in mp4." 
+			}
+		</script>
 		
-				
-		<div class="mt-4 text-center">
-			<span class="text-sm tracking-wide text-gray-500 dark:text-white">Copyright © <a href="/" class="hover:!underline font-semibold !text-gray-700">TikTokio</a> 2025 - Present. All rights reserved</span>
-
-		</div>
+		<script type="application/ld+json" style="display: none;">
+			{
+				"@context": "https://schema.org",
+				"@type": "FAQPage",
+				"mainEntity": [
+					{
+						"@type": "Question",
+						"name": "What is Tiktok - Tiktokio Video Downloader and how does it work?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Tiktok Video Downloader lets you download videos, reels, stories, and profile pictures from Tiktok. It processes the URL, extracts the media file, and provides a high-quality download link to save content directly to your device without watermarks."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "How accurate is the Tiktokio - Tiktok Video Downloader for downloading high-quality videos?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Tiktok Video Downloader maintains original video quality in most cases. It ensures you get the highest resolution available from Tiktok while preserving all video details, colors, and audio quality."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "How long does it take to download videos using Tiktokio - Tiktok Video Downloader?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Tiktokio - Tiktok Video Downloader processes most requests within seconds. Download time depends on your internet speed and video size. Most Tiktok videos, reels, and stories download in under 30 seconds, while longer Tiktok videos might take slightly more time."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Can I use Tiktok Video Downloader to save multiple videos at once?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Yes! Tiktokio - Tiktok Video Downloader supports batch downloading, allowing you to save multiple Tiktok videos, reels, and stories simultaneously. This time-saving feature is perfect for content creators, marketers, or anyone needing to download several videos efficiently."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Will Tiktokio - Tiktok Video Downloader work if I download content multiple times?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Yes, Tiktokio Tiktok Video Downloader works reliably every time. There are no limits to how many times you can download the same or different content. The servers are optimized to handle repeated requests, ensuring consistent performance for all your downloads."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "How can I use videos downloaded with Tiktok Video Downloader?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Videos from Tiktok Video Downloader can be used for offline viewing, content collections, educational purposes, presentations, or sharing across platforms. The downloaded MP4 files are compatible with all major devices and video players."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Is Tiktokio - Tiktok Video Downloader compatible with all Tiktok content types?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Tiktok - Tiktok Video Downloader works with all Tiktok content types including regular videos, reels, stories, IGTV videos, and carousel posts containing videos. It's regularly updated to accommodate Tiktok platform changes."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Is my data private when using Tiktok Video Downloader?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Yes, Tiktokio - Tiktok Video Downloader prioritizes your privacy. It doesn't store downloaded videos or track download history. The process happens through secure connections without requiring accounts or personal information."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "What devices and browsers support Tiktok Video Downloader?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Tiktokio - Tiktok Downloader works on all major devices (Windows, Mac, iPhone, iPad, Android) and browsers (Chrome, Firefox, Safari, Edge, Opera). This cross-platform compatibility ensures you can download Tiktok videos on any device."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Can I download private Tiktok content with Tiktokio - Tiktok Downloader?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Tiktok Video Downloader can only download content you have permission to view. For private accounts, you must be logged in and following that account. Tiktok Downloader respects Tiktok's privacy settings and copyright policies."
+						}
+					}
+				]
+			}
+		</script>
+		
+		<script type="application/ld+json" style="display: none;">
+			{ 
+				"@context": "https://schema.org", 
+				"@type": "WebApplication", 
+				"name": "Tiktokio", 
+				"alternateName": [ "TikTokio - TikTok Video Downloader" ], 
+				"image": "https://stiktokio.com/images/tiktokio-logo.webp", 
+				"operatingSystem": "Windows, Linux, iOS, Android, OSX, macOS", 
+				"applicationCategory": "UtilitiesApplication", 
+				"featureList": [ "TikTokio", "TikTok Video Downloader", "Download Tiktok Videos without watermark", "Download TikTok Videos", "Download Tiktok photos", "Download Douyin Video" ], 
+				"aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "ratingCount": "8173" }, 
+				"offers": { "@type": "Offer", "price": "0.00", "priceCurrency": "USD" } 
+			}
+		</script>
 	</div>
 </footer>
