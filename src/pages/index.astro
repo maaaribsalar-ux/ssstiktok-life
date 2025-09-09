@@ -3,8 +3,11 @@ import Container from "@components/container.astro";
 import Layout from "@layouts/Layout.astro";
 
 import Hero from "@components/hero.astro";
+import Stepper from "@components/stepper.astro";
+
 import Features from "@components/features.astro";
 import Newsletter from "@components/newsletter.astro";
+
 import Logos from "@components/logos.astro";
 import Content from "@components/content.astro";
 
@@ -23,6 +26,8 @@ const t = useTranslations(lang);
 <Layout>
 <Hero />
 	<Container>
+	<Stepper />	
+
 	<Newsletter />	
 		
 		
