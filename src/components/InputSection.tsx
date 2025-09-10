@@ -443,7 +443,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
                       }
                     }, 100); // Small delay to let paste complete
                   }}
-                  placeholder="Paste TikTok video link or shared content here (we'll extract the URL automatically)"
+                  placeholder="Paste TikTok video link"
                   class="w-full h-14 border-gray-700 text-black rounded-xl px-5 pr-20 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                 />
                 <button type="button" 
@@ -537,5 +537,6 @@ function InputSection({ onDataFetched }: InputSectionProps) {
     </div>
   );
 }
+
 
 export default InputSection;
