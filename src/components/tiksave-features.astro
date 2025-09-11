@@ -1,0 +1,117 @@
+---
+import Link from "@components/ui/link.astro";
+// Remove old astro-i18next imports
+// import { localizePath } from "astro-i18next";
+// import { t } from "i18next";
+
+// Add new built-in i18n imports
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+// @ts-ignore
+import { Icon } from "astro-icon/components";
+
+// Get current language and create translation function
+const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
+const lang = getLangFromUrl(safeUrl);
+const t = useTranslations(lang);
+
+// Helper function to create localized paths (if needed)
+function localizePath(path: string) {
+	if (!path || (path && path.startsWith('http')) || path === '#') return path;
+	return getRelativeLocaleUrl(lang, path);
+}
+
+const features = [
+	
+];
+---
+
+<div class="feature-box bg-white p-6 rounded-xl shadow-lg backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-500 transform hover:scale-100 hover:-translate-y-2" >
+<div class="relative p-4">
+    <div class="max-w-6xl mx-auto">
+        <div class="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
+            <div class="">
+                <h2 class="text-center text-gray-900 font-bold text-3xl">TikSave: Download TikTok video without watermark online</h2>
+                <p class="text-base leading-8 my-5">
+                  Download TikTok videos without watermark in HD quality using <a href="/tiksave-download-tiktok-video-without-watermark-with-tiktok-downloader" class="text-indigo-600">TikSave</a>, the best online TikTok downloader. Save TikTok videos quickly and easily on any device. Just Paste the video link and download Tiktok video MP4 or MP3 in seconds. Free, fast and reliable!
+                </p>
+                <h2 class="text-center text-gray-900 font-bold text-3xl">Why Choose TikSave as Your TikTok Downloader?</h2>
+                <p class="text-base leading-8 my-5">
+                   Discover the easiest way to download TikTok videos without watermarks in HD quality using Tiksave TikTok downloader to Download TikTok video without watermark, a powerful and user-friendly online tool. 
+                    Whether you're using a smartphone, tablet, or PC, TikSave lets you save TikTok videos and audio files effortlessly without installing any software. 
+                </p>
+				<p class="text-base leading-8 my-5">
+				<a href="/tiksave-download-tiktok-video-without-watermark-with-tiktok-downloader" class="text-indigo-600">TikSave</a> is a leading TikTok video downloader designed to provide a seamless experience for users worldwide. Here’s why it stands out:
+
+<ul class="divide-y divide-gray-200 px-4">
+        	<li class="py-4">
+            	<div class="flex items-center">
+                	<div class="ml-3 block text-gray-900"><span class="text-base font-bold">No Watermark or UserID:</span><span class="text-base font-normal leading-8 my-5"> Download clean, high-quality TikTok videos without watermarks or UserID overlays.</span></div>
+            	</div>
+        	</li>
+        	<li class="py-4">
+             	<div class="flex items-center">
+                	<div class="ml-3 block text-gray-900"><span class="text-base font-bold">Cross-Platform Compatibility:</span><span class="text-base font-normal leading-8 my-5"> Works on any device, including iPhone, Android, PC and tablets.</span></div>
+            	</div>
+        	</li>
+        	<li class="py-4">
+             	<div class="flex items-center">
+                	<div class="ml-3 block text-gray-900"><span class="text-base font-bold">High-Quality Formats:</span><span class="text-base font-normal leading-8 my-5"> Videos can be saved in HD quality as MP4 or converted to MP3, ensuring versatility.</span></div>
+            	</div>
+        	</li>
+			<li class="py-4">
+             	<div class="flex items-center">
+                	<div class="ml-3 block text-gray-900"><span class="text-base font-bold">No Software Installation:</span><span class="text-base font-normal leading-8 my-5"> Access the tool directly through your web browser for quick downloads.</span></div>
+            	</div>
+        	</li>
+			<li class="py-4">
+             	<div class="flex items-center">
+                	<div class="ml-3 block text-gray-900"><span class="text-base font-bold">HD Quality Downloads:</span><span class="text-base font-normal leading-8 my-5"> Save videos in crisp, high-definition resolution or extract audio as MP3 files.</span></div>
+            	</div>
+        	</li>
+			<li class="py-4">
+             	<div class="flex items-center">
+                	<div class="ml-3 block text-gray-900"><span class="text-base font-bold">Fast and Free:</span><span class="text-base font-normal leading-8 my-5"> Enjoy lightning-fast downloads without hidden fees or subscriptions with SssTitok, tiktok downloader tool.</span></div>
+            	</div>
+        	</li>
+			
+</ul>
+				<p class="text-base leading-8 my-5">
+<a href="/tiksave-download-tiktok-video-without-watermark-with-tiktok-downloader" class="text-indigo-600">TikSave</a> continues to evolve with cutting-edge features to enhance your downloading experience</p>
+                	<h2 class="text-center text-gray-900 font-bold text-3xl">How to Download TikTok Videos Without Watermark Using TikSave</h2>
+				<p class="text-base leading-8 my-5">
+                  TikSave remains a top choice for downloading TikTok videos without watermarks due to its simplicity, speed and reliability. 
+                  Unlike other tools, it doesn’t require app installations or account sign-ups, making it accessible to everyone. 
+                  Whether you're a content creator, marketer or casual user, TikSave empowers you to save and repurpose TikTok content effortlessly.
+                </p>
+<ul class="mt-6 space-y-4 text-lg text-gray-600">
+        			<li class="flex items-start">
+						<span class="mr-2.5 flex h-[26px] w-full max-w-[26px] items-center justify-center rounded-sm bg-indigo-600 text-base text-white">1</span>
+            				<span class="ml-3">Open the TikTok app on your phone or visit <strong class="text-black">TikTok.com</strong> on your browser.</span></li>
+        			<li class="flex items-start">
+						<span class="mr-2.5 flex h-[26px] w-full max-w-[26px] items-center justify-center rounded-sm bg-indigo-600 text-base text-white">2</span>
+            				<span class="ml-3">Find the video you want to download and Tap the <strong class="text-black">Share</strong> button (usually an arrow icon).</span></li>
+        			<li class="flex items-start">
+						<span class="mr-2.5 flex h-[26px] w-full max-w-[26px] items-center justify-center rounded-sm bg-indigo-600 text-base text-white">3</span>
+            				<span class="ml-3">Select <strong class="text-black">Copy Link</strong> to copy the Tiktok video URL.</span></li>
+        			<li class="flex items-start">
+						<span class="mr-2.5 flex h-[26px] w-full max-w-[26px] items-center justify-center rounded-sm bg-indigo-600 text-base text-white">4</span>
+            				<span class="ml-3">Visit <strong class="text-black">SSSTiktok.life</strong> the official SSSTikTok and TikSave website in your browser.</span></li>
+					<li class="flex items-start">
+						<span class="mr-2.5 flex h-[26px] w-full max-w-[26px] items-center justify-center rounded-sm bg-indigo-600 text-base text-white">5</span>
+            				<span class="ml-3">Paste the link into the input box labeled "Paste Tiktok video Link."</span></li>
+        			<li class="flex items-start">
+						<span class="mr-2.5 flex h-[26px] w-full max-w-[26px] items-center justify-center rounded-sm bg-indigo-600 text-base text-white">6</span>
+            				<span class="ml-3">Click the <strong class="text-black">Download</strong> button and choose your preferred video to <strong class="text-black">download TikTok video</strong> in MP4 or MP3 format.</span></li>
+</ul>
+				<p class="text-base leading-8 my-5">
+                    TikSave Tiktok downloader is your go-to solution for downloading TikTok videos without watermarks in 2025. 
+                    With its intuitive interface, cross-device compatibility and innovative features like batch downloads and cloud integration, 
+                    it’s never been easier to save your favorite TikTok content in HD. Try TikSave Tiktok video downloader today and elevate your TikTok experience!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
