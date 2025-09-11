@@ -516,7 +516,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
                     Auto-processing TikTok Lite shared content...
                   </span>
                 ) : (
-                  "By using our service you are accepting our terms of use.</a>"
+                  ""
                 )}
               </p>
             </div>
@@ -540,4 +540,5 @@ function InputSection({ onDataFetched }: InputSectionProps) {
 
 
 export default InputSection;
+
 
