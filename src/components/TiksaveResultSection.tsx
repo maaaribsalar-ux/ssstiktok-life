@@ -51,7 +51,7 @@ function ResultSection({ data, onReset }: ResultSectionProps) {
       
       {/* Results Section */}
       <div class="mt-4 max-w-6xl mx-auto">
-        <div class="bg-white rounded overflow-hidden backdrop-blur-sm border border-white/10 p-4">
+        <div class="bg-white rounded overflow-hidden backdrop-blur-sm border p-4">
           <div class="flex flex-col md:flex-row gap-4">
             <div class="md:w-1/3 flex-shrink-0">
               <div class="relative rounded-lg overflow-hidden max-h-[430px]">
@@ -156,3 +156,4 @@ function ResultSection({ data, onReset }: ResultSectionProps) {
 }
 
 export default ResultSection;
+
