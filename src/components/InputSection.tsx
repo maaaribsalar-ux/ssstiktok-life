@@ -515,7 +515,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
                     </svg>
                     Auto-processing TikTok Lite shared content...
                   </span>
-                )}
+                ):}
               </p>
             </div>
         </div>
@@ -538,4 +538,5 @@ function InputSection({ onDataFetched }: InputSectionProps) {
 
 
 export default InputSection;
+
 
