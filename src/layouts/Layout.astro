@@ -166,19 +166,7 @@ const hrefLangs = generateHrefLangs();
 		<meta name="twitter:site" content="@YourTwitterHandle" />
 		<meta name="twitter:creator" content="@tiktokio_cam" />
 		
-		<!-- Theme handling script -->
-		<script is:inline>
-			function handleThemeChange() {
-				if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-					document.documentElement.classList.add("dark");
-				} else {
-					document.documentElement.classList.remove("dark");
-				}
-			}
-			handleThemeChange();
-			document.removeEventListener("astro:after-swap", handleThemeChange);
-			document.addEventListener("astro:after-swap", handleThemeChange);
-		</script>
+		
 		
 		<!-- PWA Script -->
 		<script src="/src/pwa.ts"></script>
@@ -193,10 +181,7 @@ const hrefLangs = generateHrefLangs();
 				link.href = href;
 				document.head.appendChild(link);
 			};
-			
-			// Preload critical scripts for faster loading
-			preloadScript('/_astro/InputScreen.AI2DKR8I.js');
-			preloadScript('/_astro/solid.MQWjWrFn.js');
+	
 		</script>
 	</head>
 	<body class="bg-gray-50">
