@@ -515,7 +515,9 @@ function InputSection({ onDataFetched }: InputSectionProps) {
                     </svg>
                     Auto-processing TikTok Lite shared content...
                   </span>
-                ):}
+                ) : (
+                  "By using our service you are accepting our <a href="/privacy-policy/" class="text-indigo-600">terms of use.</a>"
+                )}
               </p>
             </div>
         </div>
@@ -538,5 +540,3 @@ function InputSection({ onDataFetched }: InputSectionProps) {
 
 
 export default InputSection;
-
-
