@@ -515,8 +515,6 @@ function InputSection({ onDataFetched }: InputSectionProps) {
                     </svg>
                     Auto-processing TikTok Lite shared content...
                   </span>
-                ) : (
-                  "Supported: Direct TikTok URLs, TikTok Lite shared content, vm.tiktok.com, m.tiktok.com - we'll extract the video URL automatically!"
                 )}
               </p>
             </div>
@@ -540,3 +538,4 @@ function InputSection({ onDataFetched }: InputSectionProps) {
 
 
 export default InputSection;
+
