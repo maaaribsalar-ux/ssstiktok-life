@@ -358,6 +358,8 @@ function InputSection({ onDataFetched }: InputSectionProps) {
             >
               <div class="relative flex-grow rounded bg-gray-200">
                 <input type="text"
+                  id="tiktok-url-input"
+                  name="tiktok-url"
                   value={url()}
                   onInput={(e) => {
                     const newUrl = e.currentTarget.value;
@@ -540,5 +542,3 @@ function InputSection({ onDataFetched }: InputSectionProps) {
 
 
 export default InputSection;
-
-
