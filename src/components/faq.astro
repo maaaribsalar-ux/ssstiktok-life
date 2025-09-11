@@ -15,68 +15,44 @@ const t = useTranslations(lang);
 
 const faqs = [
 	{
-		title: "What is this?",
-		description: "This is a astro template that uses tailwindcss and alpinejs",
+		title: "What is ssstiktok.life?",
+		description: "ssstiktok.life is a free online TikTok video downloader that allows you to save TikTok videos without watermarks in high-quality MP4 format or as MP3 audio files. No software installation or registration is required—just paste the video link and download instantly.",
 	},
 	{
-		title: "Why alpinejs? Why don't just use js?",
-		description:
-			"Alpine js is less than 17kb and it make javascript very fast to write, there are also various open source ready to use components like https://js.hyperui.dev, https://www.alpinetoolbox.com/examples, https://alpinejs.dev/components#components",
+		title: "How do I download a TikTok video without watermark using ssstiktok.life?",
+		description: "1. Open the TikTok app or website and find the video you want to download.<br/>2. Tap the 'Share' button and select 'Copy Link.'<br/>3. Visit ssstiktok.life, paste the link into the input box at the top of the page.<br/>4. Click 'Download' and choose your preferred format (no watermark MP4, with watermark, or MP3). The file will save to your device automatically.",
 	},
 	{
-		title: "But I don't need alpine js, can I remove it?",
-		description: `Of course, but some components use it and you'll have to edit these, more specifically you ll have to: <br/>
-					<ul style="list-style: inside;">
-						<li>First remove the package with the command <code>npm unistall @astrojs/alpinejs @types/alpinejs alpinejs</code></li>
-						<li>Adjust all components that uses alpine js: <code>faq.astro</code>, <code>themeselector.astro</code>, <code>navbar.astro</code></li>
-					</ul>`,
+		title: "Is ssstiktok.life free to use?",
+		description: "Yes, ssstiktok.life is completely free with no hidden fees, subscriptions, or limits on the number of downloads. You can save as many videos as you like without any restrictions.",
 	},
 	{
-		title: "Can I remove also tailwidcss?",
-		description:
-			"I mean, you can, but you'll have to basically rewrite all the template, so I don't recommend it",
+		title: "Does ssstiktok.life require me to install any apps or extensions?",
+		description: "No, there's no need to install anything. ssstiktok.life works directly in your web browser on any device, including smartphones (Android/iOS), tablets, PCs, and laptops. It's compatible with browsers like Chrome, Safari, Firefox, and Edge.",
 	},
 	{
-		title: "I don't need multiple language, how can I remove it?",
-		description: `One way is to simply keep one language and remove the selector from the footer but in order to fully remove the localization you have to: <br/>
-					<ul style="list-style: inside;">
-						<li>Remove the i18next pacakage <code>npm unistall astro-i18next</code></li>
-						<li>Remove <code>astro-i18next.config.mjs</code> file</li>
-						<li>Remove <code>locales</code> folder from public</li>
-						<li>Remove <code>languageselector.astro</code> file and from footer</li>
-						<li>Find all reference to <code>i18next</code> and <code>astro-i18next</code> and replace with your text</li>
-					</ul>`,
+		title: "Can I download TikTok videos in HD quality?",
+		description: "Absolutely! ssstiktok.life preserves the original video quality from TikTok's servers, including HD, Full HD, or even 4K if available. We don't alter or compress the files, so you get the best possible resolution without watermarks.",
 	},
 	{
-		title: "I don't need dark mode, how can I remove it?",
-		description:
-			"Dark mode is embedded into tailwindcss, so you can't remove it, but you can remove the switch from the navbar",
+		title: "Why can't I download private or restricted TikTok videos?",
+		description: "ssstiktok.life only supports downloading public videos. Private videos, deleted content, or restricted accounts cannot be processed due to TikTok's privacy settings. Ensure the video is publicly available for successful downloads.",
 	},
 	{
-		title:
-			"How can I configure the Sveltia CMS authentication with cloudflare?",
-		description: `To configure Sveltia CMS with cloudflare follow this guide <a href="https://github.com/sveltia/sveltia-cms" target="_blank">https://github.com/sveltia/sveltia-cms</a>`,
+		title: "How do I download TikTok videos on my iPhone or iPad?",
+		description: "For iOS 13+ devices, use Safari: Copy the TikTok link, paste it into ssstiktok.life, and download. For older iOS versions (12 or below), install the free 'Documents by Readdle' app, use its built-in browser to visit ssstiktok.life, and follow the same steps. Videos save to your Photos or Files app.",
 	},
 	{
-		title: "How can I configure the decap CMS authentication with netlify?",
-		description: `To configure decap CMS with netlify do the followings:
-					<ul style="list-style: inside;">
-						<li>Change NetlifyCMS config <code>config.backend.name</code> to git-gateway</li>
-						<li>Use integrated NetlifyCMS auth <a href="https://decapcms.org/docs/git-gateway-backend/#git-gateway-with-netlify" target="_blank">https://decapcms.org/docs/git-gateway-backend/#git-gateway-with-netlify</a></li>
-					</ul>`,
+		title: "Is it safe to use ssstiktok.life?",
+		description: "Yes, ssstiktok.life is safe and secure. We don't require any personal information, login details, or account access. Videos are fetched directly from TikTok's servers and downloaded to your device—we don't store or host any content ourselves.",
 	},
 	{
-		title: "How can I change the localization languages?",
-		description: `In order to change the languages you have to change the languages in the file <code>astro-i18next.config.mjs</code> and in the netlifyCMS configuration on the file <code>astro.config.mjs</code> <br/>
-					Then change the locales files folders in <code>public/locales</code>`,
+		title: "Where are the downloaded videos saved on my device?",
+		description: "Downloads go to your browser's default folder (e.g., 'Downloads' on Android/PC or Photos/Files on iOS). You can change this in your browser settings. If downloading MP3, it will save as an audio file playable in most media apps.",
 	},
 	{
-		title: "What are the files in the funciotn folder used for?",
-		description: `These are cloudflare function that are used for the authentication to the decap CMS`,
-	},
-	{
-		title: "The build on cloudflare keep failing, why?",
-		description: `One of the problem could be that the Build system version is setted to version 1, make sure that version 2 is selected`,
+		title: "What should I do if I encounter an error while downloading?",
+		description: "Errors may occur if the link is incorrect, the video is private/deleted, or there's a temporary issue with TikTok. Double-check the link format (it should be a direct video URL), try again later, or clear your browser cache. If issues persist, contact our support for help.",
 	},
 ];
 ---
