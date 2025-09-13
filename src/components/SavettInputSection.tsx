@@ -445,7 +445,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
                       }
                     }, 100); // Small delay to let paste complete
                   }}
-                  placeholder="Paste TikTok video link"
+                  placeholder="Paste a TikTok video URL here..."
                   class="w-full h-14 border-gray-700 text-black rounded-xl px-5 pr-20 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                 />
                 <button type="button" 
@@ -459,7 +459,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
               </div>
               <button type="submit" 
                 disabled={loading() || autoProcessing()}
-                class="h-14 px-8 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 disabled:from-gray-500 disabled:to-gray-400 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed">
+                class="h-14 px-8 bg-cyan-700 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed">
                 {loading() ? (
                   <>
                     <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
@@ -542,3 +542,4 @@ function InputSection({ onDataFetched }: InputSectionProps) {
 
 
 export default InputSection;
+
