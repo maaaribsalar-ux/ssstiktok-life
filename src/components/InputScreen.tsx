@@ -18,6 +18,7 @@ interface TikTokData {
     videoWatermark: string | null;
     music: string | null;
     uploadDate?: string | null;
+    images?: string[] | null;
   } | null;
 }
 
