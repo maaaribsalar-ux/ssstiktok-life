@@ -83,7 +83,6 @@ function InputSection({ onDataFetched }: InputSectionProps) {
     cleanUrl = extractTikTokUrl(cleanUrl);
     
     // Remove all query parameters and fragments from desktop/laptop TikTok URLs
-    // Handle parameters like: ?is_from_webapp=1&sender_device=pc&web_id=123456
     if (cleanUrl.includes('?')) {
       cleanUrl = cleanUrl.split('?')[0];
       console.log("Removed query parameters, clean URL:", cleanUrl);
@@ -260,13 +259,6 @@ function InputSection({ onDataFetched }: InputSectionProps) {
           );
           
           console.log("Is promotional content:", isPromotionalContent);
-          console.log("Content indicators:", {
-            lengthDiff: text.length - cleanedUrl.length,
-            hasTikTokLite: text.toLowerCase().includes('tiktok lite'),
-            hasDownloadTikTok: text.toLowerCase().includes('download tiktok'),
-            hasSharedVia: text.toLowerCase().includes('shared via'),
-            wordCount: text.split(' ').length
-          });
           
           if (isPromotionalContent) {
             console.log("Auto-processing promotional content...");
@@ -457,6 +449,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
                   Paste
                 </button>
               </div>
+              
               <button type="submit" 
                 disabled={loading() || autoProcessing()}
                 class="h-14 px-8 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 disabled:from-gray-500 disabled:to-gray-400 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed">
@@ -507,21 +500,21 @@ function InputSection({ onDataFetched }: InputSectionProps) {
             
           </div>
           {/* URL Format Help */}
-            <div class="mt-3 text-xs text-white/70">
-              <p>
-                {autoProcessing() ? (
-                  <span class="flex items-center gap-1">
-                    <svg class="animate-spin h-3 w-3" viewBox="0 0 24 24">
-                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" />
-                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 818-8v8z"/>
-                    </svg>
-                    Auto-processing TikTok Lite shared content...
-                  </span>
-                ) : (
-                  ""
-                )}
-              </p>
-            </div>
+          <div class="mt-3 text-xs text-white/70">
+            <p>
+              {autoProcessing() ? (
+                <span class="flex items-center gap-1">
+                  <svg class="animate-spin h-3 w-3" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" />
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 818-8v8z"/>
+                  </svg>
+                  Auto-processing TikTok Lite shared content...
+                </span>
+              ) : (
+                "Paste any TikTok URL and click Download!"
+              )}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -539,6 +532,5 @@ function InputSection({ onDataFetched }: InputSectionProps) {
     </div>
   );
 }
-
 
 export default InputSection;
