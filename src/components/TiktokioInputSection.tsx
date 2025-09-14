@@ -446,7 +446,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
                     }, 100); // Small delay to let paste complete
                   }}
                   placeholder="Paste TikTok video link"
-                  class="w-full h-14 border-gray-700 text-black rounded-xl px-5 pr-20 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                  class="w-full h-14 border-pink-50 text-black rounded-xl px-5 pr-20 focus:outline-none focus:ring-2 focus:ring-pink-50 focus:border-transparent transition-all duration-300"
                 />
                 <button type="button" 
                   onClick={handlePaste} 
@@ -542,5 +542,6 @@ function InputSection({ onDataFetched }: InputSectionProps) {
 
 
 export default InputSection;
+
 
 
