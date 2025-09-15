@@ -1,0 +1,190 @@
+---
+import LanguageSelector from "@components/languageselector.astro";
+import { menuitems } from "@components/navbar/navbar.astro";
+
+// Remove old astro-i18next imports
+// import { localizePath } from "astro-i18next";
+// import { t } from "i18next";
+
+// Add new built-in i18n imports
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+// Get current language and create translation function
+const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
+const lang = getLangFromUrl(safeUrl);
+const t = useTranslations(lang);
+
+// Helper function to create localized paths
+function localizePath(path: string) {
+	if (!path || (path && path.startsWith('http')) || path === '#') return path;
+	return getRelativeLocaleUrl(lang, path);
+}
+---
+
+<footer class="pb-12 pt-28 dark:bg-stone-950">
+	<div class="mx-auto max-w-6xl px-6 md:px-12 lg:px-6 xl:px-0">
+		<!-- DECOMMENT HERE IF YOU WANT YOUR LOGO IN THE FOOTER -->
+		<!-- <a href={localizePath("/")} aria-label="logo" class="group flex items-center justify-center space-x-2">
+			<Image class="inline-block" src={logo} alt="Astros" width={30} height={30} />
+			<span class="text-semibold duration-300 text-gray-400 group-hover:text-gray-900 dark:text-white dark:group-hover:text-gray-100">
+				Astros
+			</span>
+		</a> -->
+		<ul role="list" class="flex flex-wrap items-center justify-center gap-4 py-4 text-gray-600 dark:text-white sm:gap-8">
+			<li role="listitem">
+				<a href={localizePath("/")} class="duration-300 hover:text-gray-900 dark:hover:text-gray-100">Home</a>
+			</li>
+			<li role="listitem">
+				<a href={localizePath("/about")} class="duration-300 hover:text-gray-900 dark:hover:text-gray-100">About Us</a>
+			</li>
+			<li role="listitem">
+				<a href={localizePath("/contact")} class="duration-300 hover:text-gray-900 dark:hover:text-gray-100">Contact Us</a>
+			</li>
+			<li role="listitem">
+				<a href={localizePath("/privacy-policy")} class="duration-300 hover:text-gray-900 dark:hover:text-gray-100">privacy Policy</a>
+			</li>
+			{
+				menuitems.map(
+					(item) =>
+						item &&
+						item.path && (
+							<li role="listitem">
+								<a href={localizePath(item.path)} class="duration-300 hover:text-gray-900 dark:hover:text-gray-100">
+									{t(item.title)}
+								</a>
+							</li>
+						)
+				)
+			}
+		</ul>
+		
+		
+		<script type="application/ld+json">
+                    {
+                        "@context": "http://schema.org",
+                        "@type": "Organization",
+                        "name": "SssTiktok",
+                        "url": "https://ssstiktok.life",
+                        "logo": "/apple-touch-icon-180x180.webp",
+                        "image": "/meta/opengraph.webp",
+                        "description":"SssTiktok.life is a free, powerful TikTok downloader that lets you save TikTok videos without watermark in high-quality MP4 format. Easily download TikTok video.",
+                        "email": "contact@ssstiktok.life"
+                    }
+                </script>
+                                
+				<script type="application/ld+json">
+				{ "@context": "http://schema.org", 
+				"@type": "WebPage", 
+				"url": "https://ssstiktok.life", 
+				"inLanguage":"en-US", 
+				"description": "SssTiktok.life is a free, powerful TikTok downloader that lets you save TikTok videos without watermark in high-quality MP4 format. Easily download TikTok video." } 
+				</script>
+				
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is ssstiktok.life?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ssstiktok.life is a free online TikTok video downloader that allows you to save TikTok videos without watermarks in high-quality MP4 format or as MP3 audio files. No software installation or registration is required—just paste the video link and download instantly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I download a TikTok video without watermark using ssstiktok.life?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open the TikTok app or website and find the video you want to download. Tap the 'Share' button and select 'Copy Link.' Visit ssstiktok.life, paste the link into the input box at the top of the page. Click 'Download' and choose your preferred format (no watermark MP4, with watermark, or MP3). The file will save to your device automatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is ssstiktok.life free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, ssstiktok.life is completely free with no hidden fees, subscriptions, or limits on the number of downloads. You can save as many videos as you like without any restrictions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ssstiktok.life require me to install any apps or extensions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, there's no need to install anything. ssstiktok.life works directly in your web browser on any device, including smartphones (Android/iOS), tablets, PCs and laptops. It's compatible with browsers like Chrome, Safari, Firefox and Edge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I download TikTok videos in HD quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! ssstiktok.life preserves the original video quality from TikTok's servers, including HD, Full HD, or even 4K if available. We don't alter or compress the files, so you get the best possible resolution without watermarks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why can't I download private or restricted TikTok videos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ssstiktok.life only supports downloading public videos. Private videos, deleted content, or restricted accounts cannot be processed due to TikTok's privacy settings. Ensure the video is publicly available for successful downloads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I download TikTok videos on my iPhone or iPad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For iOS 13+ devices, use Safari: Copy the TikTok link, paste it into ssstiktok.life, and download. For older iOS versions (12 or below), install the free 'Documents by Readdle' app, use its built-in browser to visit ssstiktok.life and follow the same steps. Videos save to your Photos or Files app."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to use ssstiktok.life?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, ssstiktok.life is safe and secure. We don't require any personal information, login details, or account access. Videos are fetched directly from TikTok's servers and downloaded to your device—we don't store or host any content ourselves."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are the downloaded videos saved on my device?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Downloads go to your browser's default folder (e.g., 'Downloads' on Android/PC or Photos/Files on iOS). You can change this in your browser settings. If downloading MP3, it will save as an audio file playable in most media apps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I do if I encounter an error while downloading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Errors may occur if the link is incorrect, the video is private/deleted or there's a temporary issue with TikTok. Double-check the link format (it should be a direct video URL), try again later or clear your browser cache. If issues persist, contact our support for help."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json"> 
+
+{ "@context": "https://schema.org", 
+"@type": "WebApplication", 
+"name": "SssTiktok", 
+"alternateName": [ "SssTiktok - TikTok Downloader" ], 
+"image": "https://stiktokio.com/images/tiktokio-logo.webp", 
+"operatingSystem": "Windows, Linux, iOS, Android, OSX, macOS", 
+"applicationCategory": "UtilitiesApplication", 
+"featureList": [ "SssTiktok", "ssstik", "tiksave", "TikTokio", "TikTok Video Downloader", "Download Tiktok Videos without watermark", "Download TikTok Videos", "Download Tiktok photos", "Download Douyin Video" ], 
+"aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "ratingCount": "8173" }, 
+"offers": { "@type": "Offer", "price": "0.00", "priceCurrency": "USD" } }
+
+</script>				
+		<div class="mt-4 text-center">
+			<span class="text-sm tracking-wide text-gray-500 dark:text-white">Copyright © <a href="/" class="hover:!underline font-semibold !text-gray-700">SssTiktok</a> 2025 - Present. All rights reserved</span>
+		</div>
+</div>
+</footer>
