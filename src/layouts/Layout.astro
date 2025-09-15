@@ -34,8 +34,8 @@ const resolvedImageWithDomain = new URL(
 
 const { title } = Astro.props;
 const makeTitle = title
-	? `${title} | TikTokio`
-	: "TikTokio - TikTok Downloader Download TikTok Videos Mp4 Free";
+	? `${title} | SssTiktok`
+	: "SssTiktok - TikTok Downloader download video tiktok Mp4 Free";
 
 // Simplified and safe hreflang generation
 function generateHrefLangs() {
@@ -143,17 +143,17 @@ const hrefLangs = generateHrefLangs();
 		<!-- SEO -->
 		<SEO
 			title={makeTitle}
-			description="Tiktokio is tiktok downloader, tiktok video downloader and tiktok story downloader download tiktok video without watermark, tiktok to mp4 and tiktok video saver."
+			description="Ssstiktok is tiktok downloader to download video tiktok. Ssstik, tiktok video downloader to tiktok video download without watermark and download sound tiktok."
 			canonical={canonicalURL}
 			openGraph={{
 				basic: {
 					url: canonicalURL,
 					type: "website",
-					title: `TikTokio - TikTok Downloader Download TikTok Videos Mp4 Free`,
+					title: `SssTiktok - TikTok Downloader download video tiktok Mp4 Free`,
 					image: resolvedImageWithDomain,
 				},
 				image: {
-					alt: "TikTokio: TikTok Downloader",
+					alt: "SssTiktok - TikTok Downloader",
 				},
 			}}
 		/>
@@ -161,7 +161,7 @@ const hrefLangs = generateHrefLangs();
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={makeTitle} />
-		<meta name="twitter:description" content="Tiktokio is tiktok downloader, tiktok video downloader and tiktok story downloader download tiktok video without watermark, tiktok to mp4 and tiktok video saver." />
+		<meta name="twitter:description" content="Ssstiktok is tiktok downloader to download video tiktok. Ssstik, tiktok video downloader to tiktok video download without watermark and download sound tiktok." />
 		<meta name="twitter:image" content={resolvedImageWithDomain} />
 		<meta name="twitter:site" content="@YourTwitterHandle" />
 		<meta name="twitter:creator" content="@tiktokio_cam" />
