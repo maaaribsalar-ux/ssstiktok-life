@@ -356,7 +356,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
                 fetchData();
               }}
             >
-              <div class="relative flex-grow rounded bg-gray-200">
+              <div class="relative flex-grow rounded bg-white">
                 <input type="text"
                   id="tiktok-url-input"
                   name="tiktok-url"
@@ -542,6 +542,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
 
 
 export default InputSection;
+
 
 
 
