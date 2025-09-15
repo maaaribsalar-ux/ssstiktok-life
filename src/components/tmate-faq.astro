@@ -15,75 +15,59 @@ const t = useTranslations(lang);
 
 const faqs = [
 	{
-		title: "What is this?",
-		description: "This is a astro template that uses tailwindcss and alpinejs",
+		title: "What is Tmate, and what does it do?",
+		description: "Tmate is a free online TikTok video downloader that allows users to download TikTok videos without watermarks and convert them to MP3 files. It provides high-quality downloads in HD resolution and works on any device with a web browser.",
 	},
 	{
-		title: "Why alpinejs? Why don't just use js?",
-		description:
-			"Alpine js is less than 17kb and it make javascript very fast to write, there are also various open source ready to use components like https://js.hyperui.dev, https://www.alpinetoolbox.com/examples, https://alpinejs.dev/components#components",
+		title: "Is Tmate safe to use for downloading TikTok videos?",
+		description: "Yes, Tmate is completely safe to use. It features SSL certification and WAF protection to secure users from malicious attacks. No login or personal information is required, ensuring a secure and private experience.",
 	},
 	{
-		title: "But I don't need alpine js, can I remove it?",
-		description: `Of course, but some components use it and you'll have to edit these, more specifically you ll have to: <br/>
-					<ul style="list-style: inside;">
-						<li>First remove the package with the command <code>npm unistall @astrojs/alpinejs @types/alpinejs alpinejs</code></li>
-						<li>Adjust all components that uses alpine js: <code>faq.astro</code>, <code>themeselector.astro</code>, <code>navbar.astro</code></li>
-					</ul>`,
+		title: "How do I download a TikTok video without watermark using Tmate?",
+		description: "Simply copy the TikTok video link from the app or website, visit https://ssstiktok.life/tmate-tiktok-downloader, paste the link into the URL box, click 'Download' and select your preferred quality (720p or 1080p). The video will be downloaded without watermarks.",
 	},
 	{
-		title: "Can I remove also tailwidcss?",
-		description:
-			"I mean, you can, but you'll have to basically rewrite all the template, so I don't recommend it",
+		title: "Can I download TikTok audio or convert videos to MP3 with Tmate?",
+		description: "Yes, Tmate supports converting TikTok videos to MP3 format. After pasting the video link, the tool will process it and provide you with a 'Download MP3' option to save just the audio file.",
 	},
 	{
-		title: "I don't need multiple language, how can I remove it?",
-		description: `One way is to simply keep one language and remove the selector from the footer but in order to fully remove the localization you have to: <br/>
-					<ul style="list-style: inside;">
-						<li>Remove the i18next pacakage <code>npm unistall astro-i18next</code></li>
-						<li>Remove <code>astro-i18next.config.mjs</code> file</li>
-						<li>Remove <code>locales</code> folder from public</li>
-						<li>Remove <code>languageselector.astro</code> file and from footer</li>
-						<li>Find all reference to <code>i18next</code> and <code>astro-i18next</code> and replace with your text</li>
-					</ul>`,
+		title: "Do I need to install any software to use Tmate?",
+		description: "No installation is required. Tmate is a web-based tool that works directly in your browser. However, you can also install it as a PWA (Progressive Web App) on your phone by clicking 'Add Tmate to Home Screen' for easier access.",
 	},
 	{
-		title: "I don't need dark mode, how can I remove it?",
-		description:
-			"Dark mode is embedded into tailwindcss, so you can't remove it, but you can remove the switch from the navbar",
+		title: "Is Tmate free, or are there hidden costs?",
+		description: "Tmate is completely free with no hidden charges. You can download unlimited videos without any restrictions. The service may display ads to support operations, but this doesn't affect the downloading functionality.",
 	},
 	{
-		title:
-			"How can I configure the Sveltia CMS authentication with cloudflare?",
-		description: `To configure Sveltia CMS with cloudflare follow this guide <a href="https://github.com/sveltia/sveltia-cms" target="_blank">https://github.com/sveltia/sveltia-cms</a>`,
+		title: "What devices are compatible with Tmate?",
+		description: "Tmate works on all devices including PCs, Android phones, iPhones, tablets and iPads. For iOS devices, you need Safari browser with iOS 13 or higher, or you can use the Documents by Readdle app for older versions.",
 	},
 	{
-		title: "How can I configure the decap CMS authentication with netlify?",
-		description: `To configure decap CMS with netlify do the followings:
-					<ul style="list-style: inside;">
-						<li>Change NetlifyCMS config <code>config.backend.name</code> to git-gateway</li>
-						<li>Use integrated NetlifyCMS auth <a href="https://decapcms.org/docs/git-gateway-backend/#git-gateway-with-netlify" target="_blank">https://decapcms.org/docs/git-gateway-backend/#git-gateway-with-netlify</a></li>
-					</ul>`,
+		title: "Can I download videos from private TikTok accounts?",
+		description: "No, Tmate cannot download videos from private TikTok accounts. The tool only works with publicly available TikTok content and respects privacy settings.",
 	},
 	{
-		title: "How can I change the localization languages?",
-		description: `In order to change the languages you have to change the languages in the file <code>astro-i18next.config.mjs</code> and in the netlifyCMS configuration on the file <code>astro.config.mjs</code> <br/>
-					Then change the locales files folders in <code>public/locales</code>`,
+		title: "Does Tmate support downloading TikTok photos and slideshows?",
+		description: "Yes, Tmate supports downloading TikTok photos and image slideshows without watermarks. The process is the same as downloading videos - simply paste the content link and download.",
 	},
 	{
-		title: "What are the files in the funciotn folder used for?",
-		description: `These are cloudflare function that are used for the authentication to the decap CMS`,
+		title: "Are there any limits on how many videos I can download?",
+		description: "No, there are no download limits on Tmate. You can download as many TikTok videos as you want for free. However, please respect the original creators' copyrights and intellectual property rights.",
 	},
 	{
-		title: "The build on cloudflare keep failing, why?",
-		description: `One of the problem could be that the Build system version is setted to version 1, make sure that version 2 is selected`,
+		title: "Where are downloaded videos saved on my device?",
+		description: "Downloaded videos are typically saved in the 'Downloads' folder on Android devices and PCs. For iOS devices with Safari, you can choose the download location. Tmate does not store any videos on its servers.",
+	},
+	{
+		title: "What should I do if a video fails to download?",
+		description: "Download failures can occur if the TikTok video has been deleted, is from a private account, or if TikTok is experiencing technical issues. Make sure you're using the correct TikTok video link and try again later if the problem persists.",
 	},
 ];
 ---
 
 <div class="mx-auto max-w-6xl px-6 py-12 sm:py-36 lg:px-8 dark:bg-stone-950">
 	<div class="mx-auto divide-y divide-gray-900/10 dark:divide-gray-100/10">
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">{t("faq.title_sec1")} <span class="text-indigo-600">SssTiktok</span> - {t("faq.title_sec2")}</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">{t("faq.title_sec1")} <span class="text-indigo-600">Tmate</span> - {t("faq.title_sec2")}</h2>
 
 		<dl class="mt-10 space-y-6 divide-y divide-gray-900/10 dark:divide-gray-100/10">
 			{
