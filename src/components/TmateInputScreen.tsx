@@ -1,7 +1,7 @@
 import { toast, Toaster } from "solid-toast";
 import { createSignal } from "solid-js";
-import InputSection from "./TiktokioInputSection";
-import ResultSection from "./TiktokioResultSection";
+import InputSection from "./TmateInputSection";
+import ResultSection from "./TmateResultSection";
 
 interface TikTokData {
   status: string | null;
