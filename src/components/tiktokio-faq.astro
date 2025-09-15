@@ -15,68 +15,44 @@ const t = useTranslations(lang);
 
 const faqs = [
 	{
-		title: "What is this?",
-		description: "This is a astro template that uses tailwindcss and alpinejs",
+		title: "What is TikTokio, and what does it do?",
+		description: "TikTokio is a free online tool that allows users to download TikTok videos without watermarks or convert them to MP3 files. It provides high-quality downloads and is accessible on various devices without requiring registration.",
 	},
 	{
-		title: "Why alpinejs? Why don't just use js?",
-		description:
-			"Alpine js is less than 17kb and it make javascript very fast to write, there are also various open source ready to use components like https://js.hyperui.dev, https://www.alpinetoolbox.com/examples, https://alpinejs.dev/components#components",
+		title: "Is TikTokio safe to use for downloading TikTok videos?",
+		description: "Yes, TikTokio is 100% safe. It uses an active SSL certificate to protect user privacy and does not require login or personal information, ensuring a secure experience with no viruses.",
 	},
 	{
-		title: "But I don't need alpine js, can I remove it?",
-		description: `Of course, but some components use it and you'll have to edit these, more specifically you ll have to: <br/>
-					<ul style="list-style: inside;">
-						<li>First remove the package with the command <code>npm unistall @astrojs/alpinejs @types/alpinejs alpinejs</code></li>
-						<li>Adjust all components that uses alpine js: <code>faq.astro</code>, <code>themeselector.astro</code>, <code>navbar.astro</code></li>
-					</ul>`,
+		title: "How can I download a TikTok video without a watermark using TikTokio?",
+		description: "To download a TikTok video without a watermark, copy the video link from the TikTok app or website, paste it into the input box on above input section, click \'Download,\' and select the \'no watermark\' option.",
 	},
 	{
-		title: "Can I remove also tailwidcss?",
-		description:
-			"I mean, you can, but you'll have to basically rewrite all the template, so I don't recommend it",
+		title: "Can I download TikTok audio or MP3 files with TikTokio?",
+		description: "Yes, TikTokio supports extracting audio from TikTok videos in MP3 format. After pasting the video link on the website, select the \'Download MP3\' option to save the audio.",
 	},
 	{
-		title: "I don't need multiple language, how can I remove it?",
-		description: `One way is to simply keep one language and remove the selector from the footer but in order to fully remove the localization you have to: <br/>
-					<ul style="list-style: inside;">
-						<li>Remove the i18next pacakage <code>npm unistall astro-i18next</code></li>
-						<li>Remove <code>astro-i18next.config.mjs</code> file</li>
-						<li>Remove <code>locales</code> folder from public</li>
-						<li>Remove <code>languageselector.astro</code> file and from footer</li>
-						<li>Find all reference to <code>i18next</code> and <code>astro-i18next</code> and replace with your text</li>
-					</ul>`,
+		title: "Do I need to install software to use TikTokio?",
+		description: "No, TikTokio is a web-based tool that requires no additional software or extensions. Simply visit https://ssstiktok.life/tiktokio-tiktok-downloader-tiktok-video-download-without-watermark and paste the video link to start downloading.",
 	},
 	{
-		title: "I don't need dark mode, how can I remove it?",
-		description:
-			"Dark mode is embedded into tailwindcss, so you can't remove it, but you can remove the switch from the navbar",
+		title: "Is TikTokio free, or are there hidden costs?",
+		description: "TikTokio is completely free to use with no hidden costs. The site may display ads to maintain operations, but these do not affect the downloading process.",
 	},
 	{
-		title:
-			"How can I configure the Sveltia CMS authentication with cloudflare?",
-		description: `To configure Sveltia CMS with cloudflare follow this guide <a href="https://github.com/sveltia/sveltia-cms" target="_blank">https://github.com/sveltia/sveltia-cms</a>`,
+		title: "Can I use TikTokio on any device?",
+		description: "Yes, TikTokio is compatible with a wide range of devices, including PCs, smartphones (Android and iOS), tablets and iPads as long as they have a web browser.",
 	},
 	{
-		title: "How can I configure the decap CMS authentication with netlify?",
-		description: `To configure decap CMS with netlify do the followings:
-					<ul style="list-style: inside;">
-						<li>Change NetlifyCMS config <code>config.backend.name</code> to git-gateway</li>
-						<li>Use integrated NetlifyCMS auth <a href="https://decapcms.org/docs/git-gateway-backend/#git-gateway-with-netlify" target="_blank">https://decapcms.org/docs/git-gateway-backend/#git-gateway-with-netlify</a></li>
-					</ul>`,
+		title: "Does TikTokio support downloading videos from private TikTok accounts?",
+		description: "No, TikTokio can only download videos from public TikTok accounts. It does not have access to content from private accounts.",
 	},
 	{
-		title: "How can I change the localization languages?",
-		description: `In order to change the languages you have to change the languages in the file <code>astro-i18next.config.mjs</code> and in the netlifyCMS configuration on the file <code>astro.config.mjs</code> <br/>
-					Then change the locales files folders in <code>public/locales</code>`,
+		title: "Can I download TikTok photos or slideshows with TikTokio?",
+		description: "Yes, TikTokio supports downloading TikTok photos and image slideshows without watermarks. Follow the same steps as for video downloads by pasting the content link on the website.",
 	},
 	{
-		title: "What are the files in the funciotn folder used for?",
-		description: `These are cloudflare function that are used for the authentication to the decap CMS`,
-	},
-	{
-		title: "The build on cloudflare keep failing, why?",
-		description: `One of the problem could be that the Build system version is setted to version 1, make sure that version 2 is selected`,
+		title: "Are there any limits to how many TikTok videos I can download with TikTokio?",
+		description: "No, TikTokio imposes no limits on the number of videos you can download. You can save as many videos as you like, provided you respect the original creators' copyrights.",
 	},
 ];
 ---
