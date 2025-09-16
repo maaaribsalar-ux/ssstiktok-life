@@ -38,8 +38,8 @@ const resolvedImageWithDomain = new URL(
 
 const { title } = Astro.props;
 const makeTitle = title
-	? `${title} | TikTokio`
-	: "Tiktokio - Download TikTok Video Online Without Watermark easily";
+	? `${title} | SssTiktok`
+	: "SssTiktok - Download TikTok Video Online Without Watermark easily";
 
 // Simplified and safe hreflang generation
 function generateHrefLangs() {
@@ -88,7 +88,7 @@ const hrefLangs = generateHrefLangs();
 		<!-- Global CSS -->
 		<SEO
 			title={makeTitle}
-			description="Easily download TikTok videos without watermark with Tiktokio free Tiktok downloader. Save Tiktok video in MP4 format. No sign-up, free downloads on all device."
+			description="SssTiktok help users easily download TikTok videos without watermark, save tiktok videos with SssTiktok free Tiktok downloader. Save Tiktok video in MP4 format."
 			canonical={canonicalURL}
 			openGraph={{
 				basic: {
@@ -106,22 +106,11 @@ const hrefLangs = generateHrefLangs();
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={makeTitle} />
-		<meta name="twitter:description" content="Easily download TikTok videos without watermark with Tiktokio free Tiktok downloader. Save Tiktok video in MP4 format. No sign-up, free downloads on all device." />
+		<meta name="twitter:description" content="SssTiktok help users easily download TikTok videos without watermark, save tiktok videos with SssTiktok free Tiktok downloader. Save Tiktok video in MP4 format." />
 		<meta name="twitter:image" content={resolvedImageWithDomain} />
 		<meta name="twitter:site" content="@YourTwitterHandle" />
 		<meta name="twitter:creator" content="@tiktokio_cam" />
-		<script is:inline>
-			function handleThemeChange() {
-				if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-					document.documentElement.classList.add("dark");
-				} else {
-					document.documentElement.classList.remove("dark");
-				}
-			}
-			handleThemeChange();
-			document.removeEventListener("astro:after-swap", handleThemeChange);
-			document.addEventListener("astro:after-swap", handleThemeChange);
-		</script>
+		
 		<script src="/src/pwa.ts"></script>
 	</head>
 	<body class="dark:bg-white">
