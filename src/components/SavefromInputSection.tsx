@@ -459,7 +459,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
               </div>
               <button type="submit" 
                 disabled={loading() || autoProcessing()}
-                class="h-14 px-8 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 disabled:from-gray-500 disabled:to-gray-400 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed">
+                class="h-14 px-8 bg-lime-500 hover:from-lime-500 hover:to-lime-400 disabled:from-lime-500 disabled:to-lime-400 text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed">
                 {loading() ? (
                   <>
                     <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
@@ -542,3 +542,4 @@ function InputSection({ onDataFetched }: InputSectionProps) {
 
 
 export default InputSection;
+
