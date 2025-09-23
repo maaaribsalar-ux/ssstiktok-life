@@ -320,7 +320,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
       {/* Enhanced Input Form Section */}
       <div class="max-w-6xl mx-auto">
         <div class="download-box rounded-2xl">
-          <div class="bg-pink-50 rounded backdrop-blur-md p-2">
+          <div class="bg-pink-50 backdrop-blur-md p-2">
             <form class="flex flex-col md:flex-row items-stretch md:items-center gap-2"
               onSubmit={(e) => {
                 e.preventDefault();
@@ -356,7 +356,7 @@ function InputSection({ onDataFetched }: InputSectionProps) {
                 fetchData();
               }}
             >
-              <div class="relative flex-grow rounded bg-gray-200">
+              <div class="relative flex-grow bg-gray-200">
                 <input type="text"
                   id="tiktok-url-input"
                   name="tiktok-url"
@@ -542,4 +542,5 @@ function InputSection({ onDataFetched }: InputSectionProps) {
 
 
 export default InputSection;
+
 
