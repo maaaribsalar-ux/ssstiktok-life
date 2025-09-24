@@ -224,7 +224,7 @@ function ResultSection({ data, onReset }: ResultSectionProps) {
                 {/* Images Download (if applicable) */}
                 {hasImages() && (
                   <div class="space-y-2">
-                    <button class="download-button bg-gradient-to-r from-indigo-600 to-indigo-400 hover:from-indigo-500 hover:to-indigo-300 w-full p-3 rounded-lg text-white flex items-center justify-center">
+                    <button class="download-button bg-blue-400 hover:from-blue-400 hover:to-sky-600 w-full p-3 rounded text-white flex items-center justify-center">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                       </svg> 
@@ -239,7 +239,7 @@ function ResultSection({ data, onReset }: ResultSectionProps) {
                     {/* Download all images button */}
                     <div class="grid grid-cols-2 gap-2">
                       {data!.result!.images!.map((imageUrl, index) => (
-                        <button class="download-button bg-gradient-to-r from-purple-600 to-purple-400 hover:from-purple-500 hover:to-purple-300 w-full p-2 rounded text-white text-sm flex items-center justify-center">
+                        <button class="download-button bg-blue-400 hover:from-blue-400 hover:to-sky-600 w-full p-3 rounded text-white flex items-center justify-center">
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                           </svg>
@@ -257,7 +257,7 @@ function ResultSection({ data, onReset }: ResultSectionProps) {
 
                 {/* Audio Download */}
                 {data?.result?.music && (
-                  <button class="download-button bg-gradient-to-r from-yellow-600 to-yellow-400 hover:from-yellow-500 hover:to-yellow-300 w-full p-3 rounded-lg text-white flex items-center justify-center">
+                  <button class="download-button bg-blue-400 hover:from-blue-400 hover:to-sky-600 w-full p-3 rounded text-white flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
                     </svg> 
@@ -270,7 +270,7 @@ function ResultSection({ data, onReset }: ResultSectionProps) {
                 {/* Reset/New Download Button */}
                 <button 
                   onClick={onReset}
-                  class="download-button bg-gradient-to-r from-gray-600 to-gray-400 hover:from-gray-500 hover:to-gray-300 w-full p-3 rounded-lg text-white flex items-center justify-center">
+                  class="download-button bg-blue-400 hover:from-blue-400 hover:to-sky-600 w-full p-3 rounded text-white flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                   </svg>
@@ -286,4 +286,5 @@ function ResultSection({ data, onReset }: ResultSectionProps) {
 }
 
 export default ResultSection;
+
 
