@@ -208,7 +208,7 @@ function ResultSection({ data, onReset }: ResultSectionProps) {
               <div class="space-y-2">
                 {/* Video Downloads */}
                 {getDownloadUrls().map((download) => (
-                  <button class={`download-button bg-gradient-to-r ${download.color} w-full p-3 rounded-lg text-white flex items-center justify-center transition-all duration-300 hover:shadow-lg transform hover:scale-105`}>
+                  <button class={`download-button bg-blue-400 hover:from-blue-400 hover:to-sky-600 w-full p-3 rounded text-white flex items-center justify-center`}>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                     </svg> 
@@ -286,3 +286,4 @@ function ResultSection({ data, onReset }: ResultSectionProps) {
 }
 
 export default ResultSection;
+
