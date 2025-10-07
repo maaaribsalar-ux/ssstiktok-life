@@ -24,7 +24,7 @@ export default defineConfig({
   // Add Astro's built-in i18n configuration
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "it", "ar", "fr", "de", "es", "hi", "id", "ru", "pt", "ko", "tl", "nl", "ms", "tr"],
+    locales: ["en"],
     routing: {
       prefixDefaultLocale: false,
     },
@@ -68,7 +68,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter(page) {
-        const url = new URL(page, 'https://stiktokio.com');
+        
         const nonEnglishLangs = ['ar', 'it', 'de', 'es', 'fr', 'hi', 'id', 'ko', 'ms', 'nl', 'pt', 'ru', 'tl', 'tr'];
         const shouldExclude =
           nonEnglishLangs.some(lang =>
