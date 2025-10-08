@@ -13,6 +13,7 @@ import { SEO } from "astro-seo";
 
 export interface Props {
 	title?: string;
+	description?: string;  // New prop for meta/OG/Twitter description
 	lang?: string;
 }
 
@@ -32,10 +33,13 @@ const resolvedImageWithDomain = new URL(
 	Astro.site,
 ).toString();
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 const makeTitle = title
 	? `${title} | SssTiktok`
 	: "SssTiktok - TikTok Downloader download video tiktok Mp4 Free";
+
+// Fallback description (use prop if provided)
+const pageDescription = description || "Ssstiktok is tiktok downloader to download video tiktok. Ssstik, tiktok video downloader to tiktok video download without watermark and download sound tiktok.";
 
 // Simplified and safe hreflang generation
 function generateHrefLangs() {
@@ -45,7 +49,7 @@ function generateHrefLangs() {
 	}
 	
 	try {
-		const baseUrl = Astro.site?.toString() || 'https://stiktokio.com';
+		const baseUrl = Astro.site?.toString() || 'https://ssstiktok-life-eight.vercel.app';
 		
 		// Generate simple hreflang links
 		return Object.keys(languages).map(lang => {
@@ -143,17 +147,18 @@ const hrefLangs = generateHrefLangs();
 		<!-- SEO -->
 		<SEO
 			title={makeTitle}
-			description="Ssstiktok is tiktok downloader to download video tiktok. Ssstik, tiktok video downloader to tiktok video download without watermark and download sound tiktok."
+			description={pageDescription}
 			canonical={canonicalURL}
 			openGraph={{
 				basic: {
 					url: canonicalURL,
 					type: "website",
-					title: `SssTiktok - TikTok Downloader Download video tiktok Mp4 Free`,
+					title: makeTitle,  // Use dynamic title
+					description: pageDescription,  // Use dynamic description
 					image: resolvedImageWithDomain,
 				},
 				image: {
-					alt: "SssTiktok - TikTok Downloader",
+					alt: title || "SssTiktok - TikTok Downloader",  // Dynamic alt
 				},
 			}}
 		/>
@@ -161,7 +166,7 @@ const hrefLangs = generateHrefLangs();
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={makeTitle} />
-		<meta name="twitter:description" content="Ssstiktok is tiktok downloader to download video tiktok. Ssstik, tiktok video downloader to tiktok video download without watermark and download sound tiktok." />
+		<meta name="twitter:description" content={pageDescription} />
 		<meta name="twitter:image" content={resolvedImageWithDomain} />
 		<meta name="twitter:site" content="@YourTwitterHandle" />
 		<meta name="twitter:creator" content="@tiktokio_cam" />
@@ -183,7 +188,6 @@ const hrefLangs = generateHrefLangs();
 			};
 	
 		</script>
-<script src="https://analytics.ahrefs.com/analytics.js" data-key="wiE5cDu8mP40RoTfOaJ0Pg" async></script>
 	</head>
 	<body class="bg-gray-50">
 		<header class="relative">
