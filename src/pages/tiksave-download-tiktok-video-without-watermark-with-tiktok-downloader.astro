@@ -2,9 +2,9 @@
 import Container from "@components/container.astro";
 import Layout from "@layouts/Layout.astro";
 
-import Hero from "@components/tiksave-hero.astro";
+import Hero from "@components/savefrom-hero.astro";
 
-import Features from "@components/tiksave-features.astro";
+import Features from "@components/savefrom-features.astro";
 import Newsletter from "@components/newsletter.astro";
 
 import Logos from "@components/logos.astro";
@@ -20,13 +20,16 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
 const lang = getLangFromUrl(safeUrl);
 const t = useTranslations(lang);
+
+// Page-specific overrides for title and meta description
+const title = "TikTok Downloader - Download Videos Without Watermark | Tiktokio";
+const description = "Free online TikTok video downloader. Save HD MP4 videos without watermark in seconds. No login or app needed. Fast, secure and easy for all devices.";
 ---
 
-<Layout>
-<Hero />
-	<Container>
-	<Features />
-	<Faq />		
-
-	</Container>
+<Layout title={title} description={description}>
+  <Hero />
+  <Container>
+    <Features />
+    <Faq />		
+  </Container>
 </Layout>
