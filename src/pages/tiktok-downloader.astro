@@ -5,10 +5,6 @@ import Features from "@components/tdfeatures.astro";
 import Hero from "@components/td-hero.astro";
 import Layout from "@layouts/td-Layout.astro";
 
-// Remove old astro-i18next imports
-// import { changeLanguage } from "i18next";
-// changeLanguage("en");
-
 // Add new built-in i18n imports
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
@@ -18,7 +14,12 @@ const lang = getLangFromUrl(safeUrl);
 const t = useTranslations(lang);
 ---
 
-<Layout>
+// Page-specific overrides for title and meta description
+const title = "TikTok Downloader - Download TikTok Videos Without Watermark Free - HD MP4 & MP3";
+const description = "Free TikTok downloader to download TikTok videos without watermark in HD. Save TikTok to MP4 & MP3 on iPhone, Android, PC. Fast, safe & no app installation!";
+---
+
+<Layout title={title} description={description}>
 <Hero />
 	<Container>
 		
