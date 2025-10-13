@@ -3,7 +3,7 @@ import Container from "@components/container.astro";
 import Faq from "@components/faq.astro";
 import Features from "@components/dtvfeatures.astro";
 import Hero from "@components/dtv-hero.astro";
-import Layout from "@layouts/dtv-Layout.astro";
+import Layout from "@layouts/ayout.astro";
 
 // Remove old astro-i18next imports
 // import { changeLanguage } from "i18next";
@@ -16,14 +16,17 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
 const lang = getLangFromUrl(safeUrl);
 const t = useTranslations(lang);
+
+// Page-specific overrides for title and meta description
+const title = "Download TikTok Video - Save TikTok Videos Without Watermark MP4 Tiktok MP3 Free";
+const description = "Download TikTok video instantly free Tiktok Downoader tool. Save TikTok video without watermark in HD quality. Works on all devices. Fast & safe TikTok video download!";
 ---
 
-<Layout>
+<Layout title={title} description={description}>
 <Hero />
 	<Container>
-		<Features />
+	<Features />
+	<Faq />		
 
-		
-		
 	</Container>
 </Layout>
