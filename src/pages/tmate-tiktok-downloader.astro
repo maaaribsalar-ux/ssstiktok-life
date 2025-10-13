@@ -20,9 +20,13 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
 const lang = getLangFromUrl(safeUrl);
 const t = useTranslations(lang);
+
+// Page-specific SEO optimized for "Savefrom, download tiktok video"
+const title = "Tmate TikTok Video Downloader No Watermark - Download Video TikTok MP4 for Free";
+const description = "Tmate is best TikTok Downloader tool allow users to download video tiktok in HD MP4 format. Save video from TikTok easily in all devices";
 ---
 
-<Layout>
+<Layout title={title} description={description}>
 <Hero />
 	<Container>
 	<Features />
