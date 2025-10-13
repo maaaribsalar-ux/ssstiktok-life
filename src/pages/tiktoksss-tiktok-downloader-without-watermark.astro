@@ -20,9 +20,12 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const safeUrl = Astro.url || new URL('/', Astro.site || 'http://localhost:4321');
 const lang = getLangFromUrl(safeUrl);
 const t = useTranslations(lang);
+// Page-specific SEO optimized for "Savefrom, download tiktok video"
+const title = "TikToksss - Best TikTok Downloader Without Watermark - TikTok Video Downloader No Watermark";
+const description = "Discover TikToksss, the ultimate TikTok downloader without watermark for seamless HD TikTok video downloads. TikTok video downloader hassle-free.";
 ---
 
-<Layout>
+<Layout title={title} description={description}>
 <Hero />
 	<Container>
 	<Features />
