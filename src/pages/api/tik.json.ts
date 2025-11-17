@@ -1,5 +1,4 @@
 import type { APIRoute } from "astro";
-
 export const prerender = false;
 
 // Import the TikTok API library using ES modules syntax
